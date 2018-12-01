@@ -1,28 +1,17 @@
 #app
 server:
-    port: 8080
+    port: 8848
 
 #spring
 spring:
-  devtools:
-    restart:
-      enabled: false
-
-  # H2 DATABASE CONFIG
+  # mysql
   datasource:
-    type: com.zaxxer.hikari.HikariDataSource
-    schema: classpath:/db/schema-h2.sql
-    data: classpath:/db/data-h2.sql
-    url: jdbc:h2:mem:testdb
-    username: sa
-    password: sa
-    platform: h2
-    initialization-mode: always
-    continue-on-error: true
-  h2:
-    console:
-      enabled: true
-      path: /console
+    type: com.alibaba.druid.pool.DruidDataSource
+    #type: com.zaxxer.hikari.HikariDataSource
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf8&autoReconnect=true
+    username: root
+    password: 123456
 
 #mybatis
 mybatis-plus:
@@ -44,13 +33,8 @@ mybatis-plus:
       #逻辑删除配置
       logic-delete-value: 0
       logic-not-delete-value: 1
-      db-type: h2
-    #刷新mapper 调试神器
+      db-type: mysql
     refresh: true
-  # 原生配置
   configuration:
     map-underscore-to-camel-case: true
     cache-enabled: false
-##logging
-#logging:
-#  level: warn
