@@ -135,8 +135,8 @@ public class UserController extends ApiController {
     @GetMapping("/select_wrapper")
     public Object getUserByWrapper() {
         return userService.selectListByWrapper(new QueryWrapper<User>()
-                .lambda().like(User::getName, "毛")
-                .or(e -> e.like(User::getName, "张")));
+                .lambda().like(User::getName, "tom")
+                .or(e -> e.like(User::getName, "jim")));
     }
 
     /**
