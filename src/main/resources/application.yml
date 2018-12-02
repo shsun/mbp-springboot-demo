@@ -9,9 +9,14 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
     #type: com.zaxxer.hikari.HikariDataSource
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf8&autoReconnect=true
     username: root
     password: 123456
+    url: jdbc:mysql://127.0.0.1:3306/test?autoReconnect=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull
+    testOnBorrow: true
+    validationQuery: SELECT 1
+    initialSize: 2
+    minIdle: 2
+    maxActive: 3000
 
 #mybatis
 mybatis-plus:
