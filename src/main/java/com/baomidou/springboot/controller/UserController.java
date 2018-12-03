@@ -20,6 +20,11 @@ import com.baomidou.springboot.entity.enums.AgeEnum;
 import com.baomidou.springboot.entity.enums.PhoneEnum;
 import com.baomidou.springboot.service.IUserService;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
+
 /**
  * 代码生成器，参考源码测试用例：
  * <p>
@@ -27,6 +32,7 @@ import com.baomidou.springboot.service.IUserService;
  */
 @RestController
 @RequestMapping("/user")
+@Api(value = "测试接口UserController")
 public class UserController extends ApiController {
 
     @Autowired
@@ -36,9 +42,7 @@ public class UserController extends ApiController {
      * <p>
      * 测试通用 Api Controller 逻辑
      * </p>
-     * 测试地址：
-     * http://localhost:8080/user/api
-     * http://localhost:8080/user/api?test=mybatisplus
+     * 测试地址： http://localhost:8080/user/api http://localhost:8080/user/api?test=mybatisplus
      */
     @GetMapping("/api")
     public R<String> testError(String test) {
@@ -55,8 +59,7 @@ public class UserController extends ApiController {
     }
 
     /**
-     * AR 部分测试
-     * http://localhost:8080/user/test1
+     * AR 部分测试 http://localhost:8080/user/test1
      */
     @GetMapping("/test1")
     public IPage<User> test1() {
@@ -73,8 +76,7 @@ public class UserController extends ApiController {
     }
 
     /**
-     * 增删改查 CRUD
-     * http://localhost:8080/user/test2
+     * 增删改查 CRUD http://localhost:8080/user/test2
      */
     @GetMapping("/test2")
     public User test2() {
@@ -100,8 +102,7 @@ public class UserController extends ApiController {
     }
 
     /**
-     * 插入 OR 修改
-     * http://localhost:8080/user/test3
+     * 插入 OR 修改 http://localhost:8080/user/test3
      */
     @GetMapping("/test3")
     public User test3() {
@@ -134,9 +135,7 @@ public class UserController extends ApiController {
      */
     @GetMapping("/select_wrapper")
     public Object getUserByWrapper() {
-        return userService.selectListByWrapper(new QueryWrapper<User>()
-                .lambda().like(User::getName, "tom")
-                .or(e -> e.like(User::getName, "jim")));
+        return userService.selectListByWrapper(new QueryWrapper<User>().lambda().like(User::getName, "tom").or(e -> e.like(User::getName, "jim")));
     }
 
     /**
@@ -144,12 +143,13 @@ public class UserController extends ApiController {
      * 参数模式分页
      * </p>
      * <p>
-     * 7、分页 size 一页显示数量  current 当前页码
-     * 方式一：http://localhost:8080/user/page?size=1&current=1<br>
+     * 7、分页 size 一页显示数量 current 当前页码 方式一：http://localhost:8080/user/page?size=1&current=1<br>
      * <p>
-     * 集合模式，不进行分页直接返回所有结果集：
-     * http://localhost:8080/user/page?listMode=true
+     * 集合模式，不进行分页直接返回所有结果集： http://localhost:8080/user/page?listMode=true
      */
+    @ApiOperation(value = "测试用接口", notes = "测试用接口", httpMethod = "GET")
+    @ApiImplicitParams({ @ApiImplicitParam(name = "name", value = "用户姓名", dataType = "String", required = true, paramType = "form"),
+            @ApiImplicitParam(name = "id", value = "id", dataType = "int", required = false, paramType = "form") })
     @GetMapping("/page")
     public IPage page(Page page, boolean listMode) {
         if (listMode) {
@@ -161,12 +161,11 @@ public class UserController extends ApiController {
     }
 
     /**
-     * 测试事物
-     * http://localhost:8080/user/test_transactional<br>
+     * 测试事物 http://localhost:8080/user/test_transactional<br>
      * 访问如下并未发现插入数据说明事物可靠！！<br>
      * http://localhost:8080/user/test<br>
      * <br>
-     * 启动  Application 加上 @EnableTransactionManagement 注解其实可无默认貌似就开启了<br>
+     * 启动 Application 加上 @EnableTransactionManagement 注解其实可无默认貌似就开启了<br>
      * 需要事物的方法加上 @Transactional 必须的哦！！
      */
     @Transactional(rollbackFor = Exception.class)

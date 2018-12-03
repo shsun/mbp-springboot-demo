@@ -8,7 +8,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import com.baomidou.mybatisplus.core.parser.ISqlParser;
-import com.baomidou.mybatisplus.extension.incrementer.H2KeyGenerator;
 import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.PerformanceInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.tenant.TenantHandler;
@@ -77,21 +76,24 @@ public class MybatisPlusConfig {
     @Bean
     public MapperScannerConfigurer mapperScannerConfigurer() {
         MapperScannerConfigurer scannerConfigurer = new MapperScannerConfigurer();
+        // FIXME
         scannerConfigurer.setBasePackage("com.baomidou.springboot.mapper*");
         return scannerConfigurer;
     }
-
-    @Bean
-    public H2KeyGenerator getH2KeyGenerator() {
-        return new H2KeyGenerator();
-    }
-
 
     /**
      * 性能分析拦截器，不建议生产使用
      */
     @Bean
-    public PerformanceInterceptor performanceInterceptor(){
-        return new PerformanceInterceptor();
+    public PerformanceInterceptor performanceInterceptor() {
+        PerformanceInterceptor performanceInterceptor = new PerformanceInterceptor();
+        return performanceInterceptor;
     }
+
+//    @Bean
+//    public H2KeyGenerator getH2KeyGenerator() {
+//        return new H2KeyGenerator();
+//    }
+
+
 }
