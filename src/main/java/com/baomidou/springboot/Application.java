@@ -10,6 +10,7 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.WebApplicationInitializer;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
  * mybatis-plus Spring Boot 测试 Demo<br>
@@ -17,6 +18,7 @@ import org.springframework.web.WebApplicationInitializer;
  */
 @EnableTransactionManagement
 @SpringBootApplication
+@EnableSwagger2
 @ComponentScan(basePackages = {
         "com.baomidou.springboot.config",
         "com.baomidou.springboot.controller",

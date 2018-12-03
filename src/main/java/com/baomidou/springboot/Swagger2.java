@@ -1,4 +1,4 @@
-package com.baomidou.springboot.config;
+package com.baomidou.springboot;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,9 +18,8 @@ import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @Configuration
-@EnableSwagger2
 public class Swagger2 {
-
+    /*
     @Bean
     public Docket createRestApi() {
         ParameterBuilder tokenPar = new ParameterBuilder();
@@ -30,11 +29,27 @@ public class Swagger2 {
         return new Docket(DocumentationType.SWAGGER_2).apiInfo(apiInfo()).select().apis(RequestHandlerSelectors.basePackage("com.baomidou"))
                 .paths(PathSelectors.any()).build().globalOperationParameters(pars);
     }
+    */
 
-    @SuppressWarnings("deprecation")
-    private ApiInfo apiInfo() {
-        return new ApiInfoBuilder().title("个人测试").description("个人测试用api").termsOfServiceUrl("http://blog.csdn.net/penyoudi1").contact("测试").version("1.0")
+    @Bean
+    public Docket createRestApi() {
+        return new Docket(DocumentationType.SWAGGER_2)
+                .apiInfo(apiInfo())
+                .select()
+                .apis(RequestHandlerSelectors.basePackage("com.baomidou.springboot.controller"))
+                .paths(PathSelectors.any())
                 .build();
     }
 
+
+    @SuppressWarnings("deprecation")
+    private ApiInfo apiInfo() {
+        return new ApiInfoBuilder()
+                .title("Spring Boot中使用Swagger2构建RESTful APIs")
+                .description("更多Spring Boot相关文章请关注：http://blog.didispace.com/")
+                .termsOfServiceUrl("http://blog.didispace.com/")
+                .contact("程序猿DD")
+                .version("1.0")
+                .build();
+    }
 }

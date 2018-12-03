@@ -32,7 +32,7 @@ import io.swagger.annotations.ApiOperation;
  */
 @RestController
 @RequestMapping("/user")
-@Api(value = "测试接口UserController")
+@Api("UserController相关的api")
 public class UserController extends ApiController {
 
     @Autowired
@@ -104,6 +104,8 @@ public class UserController extends ApiController {
     /**
      * 插入 OR 修改 http://localhost:8080/user/test3
      */
+    @ApiOperation(value="创建用户", notes="根据User对象创建用户")
+    //@ApiImplicitParam(name = "user", value = "用户详细实体user", required = true, dataType = "User")
     @GetMapping("/test3")
     public User test3() {
         User user = new User(1L, "王五", AgeEnum.ONE, 1);
