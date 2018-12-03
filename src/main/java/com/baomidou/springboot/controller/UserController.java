@@ -150,7 +150,8 @@ public class UserController extends ApiController {
      * 集合模式，不进行分页直接返回所有结果集： http://localhost:8080/user/page?listMode=true
      */
     @ApiOperation(value = "测试用接口", notes = "测试用接口", httpMethod = "GET")
-    @ApiImplicitParams({ @ApiImplicitParam(name = "name", value = "用户姓名", dataType = "String", required = true, paramType = "form"),
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "name", value = "用户姓名", dataType = "String", required = true, paramType = "form"),
             @ApiImplicitParam(name = "id", value = "id", dataType = "int", required = false, paramType = "form") })
     @GetMapping("/page")
     public IPage page(Page page, boolean listMode) {
