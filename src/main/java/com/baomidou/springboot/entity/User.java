@@ -2,6 +2,7 @@ package com.baomidou.springboot.entity;
 
 import java.util.Date;
 
+import base.domain.SuperEntity;
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableLogic;

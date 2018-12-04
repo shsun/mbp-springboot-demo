@@ -1,4 +1,4 @@
-package com.baomidou.springboot.entity;
+package base.domain;
 
 import java.io.Serializable;
 

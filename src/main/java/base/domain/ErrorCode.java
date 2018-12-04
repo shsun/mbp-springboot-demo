@@ -1,4 +1,4 @@
-package com.baomidou.springboot;
+package base.domain;
 
 import com.baomidou.mybatisplus.extension.api.IErrorCode;
 

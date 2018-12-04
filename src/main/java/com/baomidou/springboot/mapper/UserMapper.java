@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
-import com.baomidou.springboot.SuperMapper;
+import base.domain.SuperMapper;
 import com.baomidou.springboot.entity.User;
 
 /**
