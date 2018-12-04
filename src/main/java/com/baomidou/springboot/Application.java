@@ -20,6 +20,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @SpringBootApplication
 @EnableSwagger2
 @ComponentScan(basePackages = {
+        "base",
         "com.baomidou.springboot.config",
         "com.baomidou.springboot.controller",
         "com.baomidou.springboot.service"})

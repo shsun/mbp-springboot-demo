@@ -7,22 +7,22 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
 
 @Component
-public class SpringUtil implements ApplicationContextAware {
+public class XSpringContextHolder implements ApplicationContextAware {
 
     private static ApplicationContext applicationContext;
 
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        if (SpringUtil.applicationContext == null) {
-            SpringUtil.applicationContext = applicationContext;
+        if (XSpringContextHolder.applicationContext == null) {
+            XSpringContextHolder.applicationContext = applicationContext;
         }
         System.out.println("---------------------------------------------------------------------");
 
         System.out.println("---------------------------------------------------------------------");
 
-        System.out.println("---------------cn.ansim.core.SpringUtil------------------------------------------------------");
+        System.out.println("---------------XSpringContextHolder------------------------------------------------------");
 
-        System.out.println("========ApplicationContext配置成功,在普通类可以通过调用SpringUtils.getAppContext()获取applicationContext对象,applicationContext=" + SpringUtil.applicationContext + "========");
+        System.out.println("========ApplicationContext配置成功,在普通类可以通过调用XSpringContextHolder.getAppContext()获取applicationContext对象,applicationContext=" + XSpringContextHolder.applicationContext + "========");
 
         System.out.println("---------------------------------------------------------------------");
     }

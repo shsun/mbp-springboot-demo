@@ -11,22 +11,30 @@ import org.springframework.context.ConfigurableApplicationContext;
  * springApplicationContext工具
  */
 public class SpringBeanRegisterUtil {
-    private static ApplicationContext context = SpringUtil.getApplicationContext();
+
+    /**
+     * 
+     */
+    private static ApplicationContext context = XSpringContextHolder.getApplicationContext();
+
+    /**
+     *
+     */
     private static ConfigurableApplicationContext configurableContext = (ConfigurableApplicationContext) context;
+
+    /**
+     *
+     */
     private static BeanDefinitionRegistry beanDefinitionRegistry = (DefaultListableBeanFactory) configurableContext.getBeanFactory();
 
     /**
      * 注册bean
      *
-     * @param beanId    所注册bean的id
-     * @param className bean的className，
-     *                  三种获取方式：1、直接书写，如：com.mvc.entity.User
-     *                  2、User.class.getName
-     *                  3.user.getClass().getName()
+     * @param beanId 所注册bean的id
+     * @param className bean的className， 三种获取方式：1、直接书写，如：com.mvc.entity.User 2、User.class.getName 3.user.getClass().getName()
      */
     public static void registerBean(String beanId, String className) {
-        BeanDefinitionBuilder beanDefinitionBuilder =
-                BeanDefinitionBuilder.genericBeanDefinition(className);
+        BeanDefinitionBuilder beanDefinitionBuilder = BeanDefinitionBuilder.genericBeanDefinition(className);
         BeanDefinition beanDefinition = beanDefinitionBuilder.getBeanDefinition();
         beanDefinitionRegistry.registerBeanDefinition(beanId, beanDefinition);
     }
@@ -38,16 +46,5 @@ public class SpringBeanRegisterUtil {
      */
     public static void unregisterBean(String beanId) {
         beanDefinitionRegistry.removeBeanDefinition(beanId);
-    }
-
-    /**
-     * 获取bean
-     *
-     * @param name bean的id
-     * @param <T>
-     * @return
-     */
-    public static <T> T getBean(String name) {
-        return (T) context.getBean(name);
     }
 }
