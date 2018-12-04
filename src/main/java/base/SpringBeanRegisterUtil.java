@@ -30,14 +30,39 @@ public class SpringBeanRegisterUtil {
     /**
      * 注册bean
      *
-     * @param beanId 所注册bean的id
+     * @param name 所注册bean的id
      * @param className bean的className， 三种获取方式：1、直接书写，如：com.mvc.entity.User 2、User.class.getName 3.user.getClass().getName()
      */
-    public static void registerBean(String beanId, String className) {
-        BeanDefinitionBuilder beanDefinitionBuilder = BeanDefinitionBuilder.genericBeanDefinition(className);
-        BeanDefinition beanDefinition = beanDefinitionBuilder.getBeanDefinition();
-        beanDefinitionRegistry.registerBeanDefinition(beanId, beanDefinition);
+//    public static <T> T registerBean(String name, String className, Object... args) {
+//        BeanDefinitionBuilder beanDefinitionBuilder = BeanDefinitionBuilder.genericBeanDefinition(className);
+//        BeanDefinition beanDefinition = beanDefinitionBuilder.getBeanDefinition();
+//        beanDefinitionRegistry.registerBeanDefinition(name, beanDefinition);
+//    }
+
+    /**
+     * InrSer ser = registerBean("test", InrSer.class);
+     *
+     * InrSer ser2 = registerBean("test2", InrSer.class, "一灰灰Blog", 20);
+     *
+     * @param name
+     * @param clazz
+     * @param args
+     * @param <T>
+     * @return
+     */
+    public static <T> T registerBean(String name, Class<T> clazz, Object... args) {
+        BeanDefinitionBuilder beanDefinitionBuilder = BeanDefinitionBuilder.genericBeanDefinition(clazz);
+        if (args.length > 0) {
+            for (Object arg : args) {
+                beanDefinitionBuilder.addConstructorArgValue(arg);
+            }
+        }
+        BeanDefinition beanDefinition = beanDefinitionBuilder.getRawBeanDefinition();
+        BeanDefinitionRegistry beanFactory = (BeanDefinitionRegistry) configurableContext.getBeanFactory();
+        beanFactory.registerBeanDefinition(name, beanDefinition);
+        return configurableContext.getBean(name, clazz);
     }
+
 
     /**
      * 移除bean
