@@ -205,7 +205,7 @@ public class UserController extends ApiController {
             @ApiImplicitParam(name = "age", value = "用户年龄", dataType = "Integer", required = false, paramType = "form")})
     @Transactional(rollbackFor = Exception.class)
     @PostMapping("/test_transactional_form")
-    public void testTransactional(UserForm form) {
+    public void testTransactional(@RequestBody UserForm form) {
         User user = new User();
         user = (User) XAsReflectorUtil.merge(form, user);
         userService.save(user);

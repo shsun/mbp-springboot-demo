@@ -90,6 +90,10 @@ public class WebConfig extends WebMvcConfigurationSupport {
         pageableHandlerMethodArgumentResolver.setPageParameterName("page");
 //        pageableHandlerMethodArgumentResolver.setOneIndexedParameters(true);
         argumentResolvers.add(pageableHandlerMethodArgumentResolver);
+
+
+        argumentResolvers.add(new SessionInfoArgumentResolver());
+
     }
 
 

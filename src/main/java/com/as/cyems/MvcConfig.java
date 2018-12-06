@@ -21,7 +21,7 @@ import java.util.List;
  *
  * @author richard
  */
-// @Configuration
+//@Configuration
 public class MvcConfig extends WebMvcConfigurerAdapter {
     // 添加试图解析器
 //    public void configureViewResolvers(ViewResolverRegistry registry) {
