@@ -15,9 +15,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 @ComponentScan(basePackages = {
         "base",
-        "com.as.cyems.config",
-        "com.as.cyems.controller",
-        "com.as.cyems.service"})
+        "com.as.cyems"})
 public class Application extends SpringBootServletInitializer {
 
     /**
