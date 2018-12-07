@@ -30,6 +30,15 @@ public class User extends SuperEntity<User> {
 
     private static final long serialVersionUID = 1L;
 
+    public User() {
+        this(null, null);
+    }
+
+    public User(String name, String roleKey) {
+        this.setName(name);
+        this.setRoleKey(roleKey);
+    }
+
     public Long getTestId() {
         return testId;
     }

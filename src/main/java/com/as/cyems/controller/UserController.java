@@ -126,16 +126,17 @@ public class UserController extends ApiController {
      * 插入 OR 修改
      * http://localhost:8080/zuser/test3
      */
-    /*
+
     @ApiOperation(value = "创建用户", notes = "根据ZUser对象创建用户")
     @GetMapping("/test3")
     public User test3() {
-        User user = new User(1L, "王五", AgeEnum.ONE, 1);
-        user.setPhone(PhoneEnum.CT);
+        User user = new User();
+        user.setName("王五");
+        user.setRoleKey("1");
         userService.saveOrUpdate(user);
         return userService.getById(1L);
     }
-    */
+
 
     /**
      * http://localhost:8080/zuser/add
