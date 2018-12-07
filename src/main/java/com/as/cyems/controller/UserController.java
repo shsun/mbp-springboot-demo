@@ -33,14 +33,26 @@ public class UserController extends ApiController {
      * </p>
      * 测试地址：
      * http://localhost:8080/zuser/api
-     * http://localhost:8080/zuser/api?test=mybatisplus
+     * http://localhost:8080/zuser/api?message=mybatisplus
      */
-    @GetMapping("/api")
-    public R<String> testError(String test) {
-        Assert.notNull(ErrorCode.TEST, test);
-        R<String> r = success(test);
+    @ApiOperation(value = "测试ok", notes = "该测试用于对swagger有一个感性的认识, 没有任何业务含义", httpMethod = "GET")
+    @GetMapping("/api_ok")
+    public R<String> testOk(String message) {
+        Assert.notNull(ErrorCode.TEST, message);
+        R<String> r = R.ok(message);
         return r;
     }
+
+    @ApiOperation(value = "测试failed", notes = "该测试用于对swagger有一个感性的认识, 没有任何业务含义", httpMethod = "GET")
+    @GetMapping("/api_failed")
+    public R<String> testError(String message) {
+        Assert.notNull(ErrorCode.TEST, message);
+        R<String> r = R.failed(message);
+        return r;
+    }
+
+
+
 
     /**
      * 测试分页, size为12
@@ -48,7 +60,8 @@ public class UserController extends ApiController {
      */
     @GetMapping("/testPage")
     public IPage<User> test() {
-        return userService.page(new Page<User>(0, 12), null);
+        IPage<User> p = userService.page(new Page<User>(0, 12), null);
+        return p;
     }
 
     /**
@@ -157,8 +170,6 @@ public class UserController extends ApiController {
     }
 
     /**
-     *
-     *
      * http://localhost:8080/zuser/select_sql
      */
     @ApiOperation(value = "该示例演示的是SQL语句直接写到mapper内, 而不是写在mapping内， 一般不推荐这样的用法", notes = "测试用接口", httpMethod = "GET")
@@ -168,7 +179,6 @@ public class UserController extends ApiController {
     }
 
     /**
-     *
      * http://localhost:8080/zuser/select_wrapper
      */
     @ApiOperation(value = "该示例演示的是查询条件写在代码内， 不写在mapping内", notes = "测试用接口", httpMethod = "GET")
