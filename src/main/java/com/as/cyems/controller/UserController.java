@@ -5,6 +5,7 @@ import com.as.cyems.ErrorCode;
 import com.as.cyems.domain.User;
 import com.as.cyems.form.UserForm;
 import com.as.cyems.service.IUserService;
+import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.api.ApiController;
@@ -88,7 +89,9 @@ public class UserController extends ApiController {
      */
     @GetMapping("/testPage")
     public IPage<User> test() {
-        IPage<User> p = userService.page(new Page<User>(0, 12), null);
+        Page<User> page = new Page<User>(0, 12);
+        Wrapper<User> wrapper = null;
+        IPage<User> p = userService.page(page, wrapper);
         return p;
     }
 
@@ -228,7 +231,9 @@ public class UserController extends ApiController {
     @ApiOperation(value = "测试用接口", notes = "测试用接口", httpMethod = "GET")
     @GetMapping("/page")
     public IPage page(Page page) {
-        return userService.page(page, null);
+        Wrapper<User> wrapper = null;
+        IPage p = userService.page(page, wrapper);
+        return p;
     }
 
     /**
