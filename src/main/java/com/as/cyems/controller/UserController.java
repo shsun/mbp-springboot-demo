@@ -90,7 +90,7 @@ public class UserController extends ApiController {
     @GetMapping("/testPage")
     public IPage<User> test() {
         Page<User> page = new Page<User>(0, 12);
-        Wrapper<User> wrapper = null;
+        Wrapper<User> wrapper = new QueryWrapper<User>().orderByDesc("name");
         IPage<User> p = userService.page(page, wrapper);
         return p;
     }
@@ -231,7 +231,7 @@ public class UserController extends ApiController {
     @ApiOperation(value = "测试用接口", notes = "测试用接口", httpMethod = "GET")
     @GetMapping("/page")
     public IPage page(Page page) {
-        Wrapper<User> wrapper = null;
+        Wrapper<User> wrapper = new QueryWrapper<User>().orderByDesc("name");
         IPage p = userService.page(page, wrapper);
         return p;
     }
