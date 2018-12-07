@@ -11,6 +11,7 @@ import com.baomidou.mybatisplus.extension.api.ApiController;
 import com.baomidou.mybatisplus.extension.api.Assert;
 import com.baomidou.mybatisplus.extension.api.R;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.google.common.collect.Lists;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -18,6 +19,10 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Api(tags = "user表的增删改查")
 @RestController
@@ -36,12 +41,37 @@ public class UserController extends ApiController {
      * http://localhost:8080/zuser/api?message=mybatisplus
      */
     @ApiOperation(value = "测试ok", notes = "该测试用于对swagger有一个感性的认识, 没有任何业务含义", httpMethod = "GET")
-    @GetMapping("/api_ok")
-    public R<String> testOk(String message) {
+    @GetMapping("/api_ok_string")
+    public R<String> testOkString(String message) {
         Assert.notNull(ErrorCode.TEST, message);
         R<String> r = R.ok(message);
         return r;
     }
+
+    @ApiOperation(value = "测试ok", notes = "该测试用于对swagger有一个感性的认识, 没有任何业务含义", httpMethod = "GET")
+    @GetMapping("/api_ok_map")
+    public R<Map<String, Object>> testOkMap(String message) {
+        Assert.notNull(ErrorCode.TEST, message);
+        Map<String, Object> map = new HashMap<>();
+        map.put("name", "老孙");
+        map.put("age", 55);
+        map.put("sex", 1);
+        R<Map<String, Object>> r = R.ok(map);
+        return r;
+    }
+
+    @ApiOperation(value = "测试ok", notes = "该测试用于对swagger有一个感性的认识, 没有任何业务含义", httpMethod = "GET")
+    @GetMapping("/api_ok_list")
+    public R<List<User>> testOkList(String message) {
+        Assert.notNull(ErrorCode.TEST, message);
+        List<User> list = Lists.newArrayList();
+        for (int i = 0; i < 5; i++) {
+            list.add(new User("老孙_" + i, "" + i));
+        }
+        R<List<User>> r = R.ok(list);
+        return r;
+    }
+
 
     @ApiOperation(value = "测试failed", notes = "该测试用于对swagger有一个感性的认识, 没有任何业务含义", httpMethod = "GET")
     @GetMapping("/api_failed")
@@ -50,8 +80,6 @@ public class UserController extends ApiController {
         R<String> r = R.failed(message);
         return r;
     }
-
-
 
 
     /**
