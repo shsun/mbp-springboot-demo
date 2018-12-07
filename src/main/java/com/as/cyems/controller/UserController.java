@@ -115,6 +115,16 @@ public class UserController extends ApiController {
         return p;
     }
 
+
+    @ApiOperation(value = "删除", notes = "删除所有名字内有关键字'张','一'的人员记录", httpMethod = "GET")
+    @GetMapping("/removeLike")
+    public void removeLike() {
+        Wrapper<User> wrapper = new QueryWrapper<User>()
+                .lambda().like(User::getName, "张")
+                .or(e -> e.like(User::getName, "一"));
+        userService.remove(wrapper);
+    }
+
     /**
      * 增删改查 CRUD
      * http://localhost:8080/zuser/test2
