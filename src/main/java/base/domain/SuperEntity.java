@@ -11,9 +11,11 @@ import com.baomidou.mybatisplus.extension.activerecord.Model;
  */
 public class SuperEntity<T extends Model> extends Model<T> {
 
+
     /**
      * 主键ID , 这里故意演示注解可以无
      */
+    /*
     @TableId("test_id")
     private Long id;
     private Long tenantId;
@@ -35,8 +37,16 @@ public class SuperEntity<T extends Model> extends Model<T> {
         return this;
     }
 
+
     @Override
     protected Serializable pkVal() {
         return this.id;
+    }
+
+      */
+
+    @Override
+    protected Serializable pkVal() {
+        return null;
     }
 }

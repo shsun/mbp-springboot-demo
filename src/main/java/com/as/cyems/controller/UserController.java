@@ -52,24 +52,24 @@ public class UserController extends ApiController {
     }
 
     /**
-     * AR 部分测试
+     * insert&select 部分测试
      * http://localhost:8080/zuser/test1
      */
-    /*
+    @ApiOperation(value = "测试insert&select", notes = "先删除全部,再新增,再更新", httpMethod = "GET")
     @GetMapping("/test1")
     public IPage<User> test1() {
-        User user = new User("testAr", AgeEnum.ONE, 1);
+        User user = new User();
         System.err.println("删除所有：" + user.delete(null));
-        user.setRole(111L);
-        user.setTestDate(new Date());
-        user.setPhone(PhoneEnum.CMCC);
+        user.setName("test1");
+        user.setRoleKey("1");
         user.insert();
         System.err.println("查询插入结果：" + user.selectById().toString());
+        //
         user.setName("mybatis-plus-ar");
         System.err.println("更新：" + user.updateById());
-        return user.selectPage(new Page<User>(0, 12), null);
+        IPage<User> p = user.selectPage(new Page<User>(0, 12), null);
+        return p;
     }
-    */
 
     /**
      * 增删改查 CRUD

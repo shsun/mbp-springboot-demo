@@ -43,7 +43,7 @@ public class BakUser extends SuperEntity<BakUser> {
     }
 
     public BakUser(Long id, String name, AgeEnum age, Integer testType) {
-        this.setId(id);
+        //this.setId(id);
         this.name = name;
         this.age = age;
         this.testType = testType;
@@ -104,11 +104,13 @@ public class BakUser extends SuperEntity<BakUser> {
         this.testDate = testDate;
     }
 
+    /*
     @Override
     public String toString() {
         return "BakUser [id=" + this.getId() + ", name=" + name + ", age=" + age
                 + ", testType=" + testType + ", testDate="
                 + testDate + ", role=" + role + ", phone=" + phone + "]";
     }
+    */
 
 }

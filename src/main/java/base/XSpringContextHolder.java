@@ -22,7 +22,7 @@ public class XSpringContextHolder implements ApplicationContextAware {
 
         System.out.println("---------------XSpringContextHolder------------------------------------------------------");
 
-        System.out.println("========ApplicationContext配置成功,在普通类可以通过调用XSpringContextHolder.getAppContext()获取applicationContext对象,applicationContext=" + XSpringContextHolder.applicationContext + "========");
+        System.out.println("========XSpringContextHolder配置成功,在普通类可以通过调用XSpringContextHolder.getAppContext()获取applicationContext对象,applicationContext=" + XSpringContextHolder.applicationContext + "========");
 
         System.out.println("---------------------------------------------------------------------");
     }

@@ -93,7 +93,7 @@ public class BakUserController extends ApiController {
         BakUser user = new BakUser("张三", AgeEnum.TWO, 1);
         boolean result = userService.save(user);
         // 自动回写的ID
-        Long id = user.getId();
+        Long id = 11L;//user.getId();
         System.err.println("插入一条数据：" + result + ", 插入信息：" + user.toString());
         System.err.println("查询：" + userService.getById(id).toString());
         System.err.println("更新一条数据：" + userService.updateById(new BakUser(1L, "三毛", AgeEnum.ONE, 1)));

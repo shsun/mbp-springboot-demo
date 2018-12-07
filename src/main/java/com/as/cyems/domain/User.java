@@ -1,11 +1,11 @@
 package com.as.cyems.domain;
 
-import com.as.cyems.domain.enums.AgeEnum;
+import base.domain.SuperEntity;
 
 import java.io.Serializable;
 import java.util.Date;
 
-public class User implements Serializable {
+public class User extends SuperEntity<User> {
 
     private Long testId;
 
@@ -87,5 +87,10 @@ public class User implements Serializable {
 
     public void setPhone(String phone) {
         this.phone = phone == null ? null : phone.trim();
+    }
+
+    @Override
+    protected Serializable pkVal() {
+        return this.getTestId();
     }
 }
