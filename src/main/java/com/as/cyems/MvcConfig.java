@@ -49,11 +49,16 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
     @Override
     public void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolvers) {
         // argumentResolvers.add(new LoginUserArgumentResolver());
+
+        //
         SortArgumentResolver sort = new JqueryStyleSortArgumentResolver();
         PageableHandlerMethodArgumentResolver pageableHandlerMethodArgumentResolver = new PageableHandlerMethodArgumentResolver(sort);
         pageableHandlerMethodArgumentResolver.setSizeParameterName("pageSize");
         pageableHandlerMethodArgumentResolver.setPageParameterName("page");
         // pageableHandlerMethodArgumentResolver.setOneIndexedParameters(true);
         argumentResolvers.add(pageableHandlerMethodArgumentResolver);
+        //
+        // SessionInfoArgumentResolver sessionInfoArgumentResolver = new SessionInfoArgumentResolver();
+        // argumentResolvers.add(sessionInfoArgumentResolver);
     }
 }
