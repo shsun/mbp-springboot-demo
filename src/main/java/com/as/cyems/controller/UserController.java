@@ -224,18 +224,10 @@ public class UserController extends ApiController {
      * <p>
      * 7、分页 size 一页显示数量  current 当前页码
      * 方式一：http://localhost:8080/zuser/page?size=1&current=1<br>
-     * <p>
-     * 集合模式，不进行分页直接返回所有结果集：
-     * http://localhost:8080/zuser/page?listMode=true
      */
     @ApiOperation(value = "测试用接口", notes = "测试用接口", httpMethod = "GET")
     @GetMapping("/page")
-    public IPage page(Page page, boolean listMode) {
-        if (listMode) {
-            // size 小于 0 不在查询 total 及分页，自动调整为列表模式。
-            // 注意！！这个地方自己控制好！！
-            page.setSize(-1);
-        }
+    public IPage page(Page page) {
         return userService.page(page, null);
     }
 
