@@ -1,7 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.baomidou</groupId>
+    <groupId>com.as</groupId>
     <artifactId>cyems</artifactId>
     <version>1.0</version>
 
@@ -28,10 +28,10 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-
-        <version>2.0.3.RELEASE</version>
+        <version>2.1.0.RELEASE</version>
 
         <!--
+        <version>2.0.3.RELEASE</version>
         <version>1.5.15.RELEASE</version>
         -->
     </parent>
@@ -41,7 +41,6 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <mybatisplus.version>3.0.4</mybatisplus.version>
-        <HikariCP.version>3.2.0</HikariCP.version>
     </properties>
 
     <dependencies>
@@ -178,6 +177,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>2.1.0.RELEASE</version>
             </plugin>
 
             <plugin>
@@ -188,15 +188,6 @@
                     <verbose>true</verbose>
                     <overwrite>true</overwrite>
                 </configuration>
-                <!--
-                <dependencies>
-                    <dependency>
-                        <groupId>mysql</groupId>
-                        <artifactId>mysql-connector-java</artifactId>
-                        <version>5.1.30</version>
-                    </dependency>
-                </dependencies>
-                -->
             </plugin>
         </plugins>
     </build>
