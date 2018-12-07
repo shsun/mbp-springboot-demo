@@ -1,12 +1,14 @@
 package com.as.cyems.domain;
 
 import base.domain.SuperEntity;
+import com.baomidou.mybatisplus.annotation.TableId;
 
 import java.io.Serializable;
 import java.util.Date;
 
 public class User extends SuperEntity<User> {
 
+    @TableId("test_id")
     private Long testId;
 
     private Long tenantId;
