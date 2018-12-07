@@ -8,6 +8,9 @@ import java.util.Date;
 
 public class User extends SuperEntity<User> {
 
+    /**
+     * 主键。 如果有主键, 必须写出哪个属性是主键, 没有的主键的话, 则可以不写。
+     */
     @TableId("test_id")
     private Long testId;
 
@@ -91,8 +94,13 @@ public class User extends SuperEntity<User> {
         this.phone = phone == null ? null : phone.trim();
     }
 
+    /**
+     * 该方法必须有
+     *
+     * @return
+     */
     @Override
     protected Serializable pkVal() {
-        return this.getTestId();
+        return this.testId;
     }
 }

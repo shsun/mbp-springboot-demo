@@ -75,21 +75,43 @@ public class UserController extends ApiController {
      * 增删改查 CRUD
      * http://localhost:8080/zuser/test2
      */
-    /*
+    @ApiOperation(value = "增删改查 CRUD", notes = "增删改查 CRUD", httpMethod = "GET")
     @GetMapping("/test2")
     public User test2() {
+        //
         System.err.println("删除一条数据：" + userService.removeById(1L));
         System.err.println("deleteAll：" + userService.deleteAll());
-        System.err.println("插入一条数据：" + userService.save(new User(1L, "张三", AgeEnum.TWO, 1)));
-        User user = new User("张三", AgeEnum.TWO, 1);
-        boolean result = userService.save(user);
+
+        // save
+        User u1 = new User();
+        u1.setName("test2");
+        u1.setRoleKey("2");
+        System.err.println("插入一条数据：" + userService.save(u1));
+
+        // save
+        User u2 = new User();
+        u2.setName("test3");
+        u2.setRoleKey("1");
+        boolean result = userService.save(u2);
+
         // 自动回写的ID
-        Long id = user.getId();
-        System.err.println("插入一条数据：" + result + ", 插入信息：" + user.toString());
+        Long id = u2.getTestId();
+        System.err.println("插入一条数据：" + result + ", 插入信息：" + u2.toString());
         System.err.println("查询：" + userService.getById(id).toString());
-        System.err.println("更新一条数据：" + userService.updateById(new User(1L, "三毛", AgeEnum.ONE, 1)));
+
+        User u3 = new User();
+        u3.setTestId(1L);
+        u3.setName("三毛");
+        u3.setRoleKey("1");
+        System.err.println("更新一条数据：" + userService.updateById(u3));
+
+        //
         for (int i = 0; i < 5; ++i) {
-            userService.save(new User(Long.valueOf(100 + i), "张三" + i, AgeEnum.ONE, 1));
+            User tt = new User();
+            // tt.setTestId(Long.valueOf(100 + i));
+            tt.setName("三毛_" + i);
+            tt.setRoleKey("1");
+            userService.save(tt);
         }
         IPage<User> userListPage = userService.page(new Page<User>(1, 5), new QueryWrapper<User>());
         System.err.println("total=" + userListPage.getTotal() + ", current list size=" + userListPage.getRecords().size());
@@ -98,7 +120,7 @@ public class UserController extends ApiController {
         System.err.println("total=" + userListPage.getTotal() + ", current list size=" + userListPage.getRecords().size());
         return userService.getById(1L);
     }
-    */
+
 
     /**
      * 插入 OR 修改

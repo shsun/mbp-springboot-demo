@@ -14,12 +14,12 @@
 
 
     <delete id="deleteAll">
-    DELETE FROM USER
+    DELETE FROM user
   </delete>
 
 
     <select id="selectListByWrapper" resultType="com.as.cyems.domain.User">
-        SELECT * FROM USER
+        SELECT * FROM user
         <!-- 判断 wrapper 是否为空 emptyOfWhere -->
         <where>
             ${ew.sqlSegment}
