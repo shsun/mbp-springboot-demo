@@ -1,8 +1,7 @@
-package com.as.cyems.controller;
+package bak;
 
 import java.util.Date;
 
-import com.as.cyems.domain.BakUser;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +19,6 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.as.cyems.ErrorCode;
 import com.as.cyems.domain.enums.AgeEnum;
 import com.as.cyems.domain.enums.PhoneEnum;
-import com.as.cyems.service.IBakUserService;
 
 /**
  * 代码生成器，参考源码测试用例：

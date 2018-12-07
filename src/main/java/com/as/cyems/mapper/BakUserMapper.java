@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Select;
 
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.as.cyems.SuperMapper;
-import com.as.cyems.domain.BakUser;
+import bak.BakUser;
 
 /**
  * BakUser 表数据库控制层接口

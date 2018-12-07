@@ -1,14 +1,12 @@
-package com.as.cyems.service.impl;
+package bak;
 
 import java.util.List;
 
-import com.as.cyems.domain.BakUser;
 import org.springframework.stereotype.Service;
 
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.as.cyems.mapper.BakUserMapper;
-import com.as.cyems.service.IBakUserService;
 
 /**
  *

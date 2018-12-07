@@ -254,6 +254,7 @@ public class UserController extends ApiController {
     public void testTransactional(String name) {
         UserForm form = new UserForm();
         form.setName(name);
+        form.setRoleKey("2");
         testTransactional(form);
     }
 
@@ -266,6 +267,9 @@ public class UserController extends ApiController {
     @Transactional(rollbackFor = Exception.class)
     @PostMapping("/test_transactional_form")
     public void testTransactional(@RequestBody UserForm form) {
+
+        System.err.println("??????????????");
+
         User user = new User();
         user = (User) XAsReflectorUtil.merge(form, user);
         userService.save(user);

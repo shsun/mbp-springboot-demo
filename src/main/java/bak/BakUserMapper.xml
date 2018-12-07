@@ -11,7 +11,7 @@
 		DELETE FROM USER
 	</delete>
 
-	<select id="selectListByWrapper" resultType="com.as.cyems.domain.BakUser">
+	<select id="selectListByWrapper" resultType="bak.BakUser">
 		SELECT * FROM USER
 		<!-- 判断 wrapper 是否为空 emptyOfWhere -->
 		<where>
