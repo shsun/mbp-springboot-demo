@@ -21,7 +21,7 @@ import java.util.List;
  *
  * @author richard
  */
-//@Configuration
+@Configuration
 public class MvcConfig extends WebMvcConfigurerAdapter {
     // 添加试图解析器
 //    public void configureViewResolvers(ViewResolverRegistry registry) {
@@ -42,6 +42,7 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
                 .indentOutput(true).dateFormat(new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss"));//LocalDateTime
         converters.add(new MappingJackson2HttpMessageConverter(builder.build()));
     }
+
 
     /**
      * 参数解析器

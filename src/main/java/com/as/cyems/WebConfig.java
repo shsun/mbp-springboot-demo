@@ -22,7 +22,7 @@ import java.util.List;
 
 
 //@EnableWebMvc
-@Configuration
+//@Configuration
 public class WebConfig extends WebMvcConfigurationSupport {
 
     @Override

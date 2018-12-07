@@ -119,10 +119,10 @@ public class UserController extends ApiController {
      * http://localhost:8080/zuser/add
      */
     @ApiOperation(value = "测试添加用户信息", notes = "测试事务接口", httpMethod = "POST")
-    @ApiImplicitParams({
-            @ApiImplicitParam(name = "roleKey", value = "用户角色key", dataType = "String", required = false, paramType = "form"),
-            @ApiImplicitParam(name = "name", value = "用户姓名", dataType = "String", required = true, paramType = "form"),
-            @ApiImplicitParam(name = "age", value = "用户年龄", dataType = "Integer", required = false, paramType = "form")})
+//    @ApiImplicitParams({
+//            @ApiImplicitParam(name = "roleKey", value = "用户角色key", dataType = "String", required = false, paramType = "form"),
+//            @ApiImplicitParam(name = "name", value = "用户姓名", dataType = "String", required = true, paramType = "form"),
+//            @ApiImplicitParam(name = "age", value = "用户年龄", dataType = "Integer", required = false, paramType = "form")})
     @PostMapping("/add")
     public boolean addZUser(@RequestBody UserForm form) {
         User user = new User();
