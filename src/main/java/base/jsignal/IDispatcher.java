@@ -1,5 +1,3 @@
-// http://paulmoore.mit-license.org/
-
 package base.jsignal;
 
 /**
@@ -7,11 +5,11 @@ package base.jsignal;
  */
 public interface IDispatcher {
 
-	/**
-	 * Dispatches the arguments to all listeners registered to the dispatcher.
-	 * 
-	 * @param args the arguments to dispatch with
-	 * @throws SignalException if a slot callback method could not be invoked 
-	 */
-	public void dispatch(Object... args);
+    /**
+     * Dispatches the arguments to all listeners registered to the dispatcher.
+     *
+     * @param args the arguments to dispatch with
+     * @throws SignalException if a slot callback method could not be invoked
+     */
+    void dispatch(Object... args);
 }

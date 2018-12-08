@@ -1,5 +1,3 @@
-// http://paulmoore.mit-license.org/
-
 package base.jsignal;
 
 /**
@@ -9,8 +7,8 @@ package base.jsignal;
  */
 public interface ISignalOwner extends ISignal, IDispatcher {
 
-	/**
-	 * Unregisters all listeners to this signal.
-	 */
-	public void removeAll();
+    /**
+     * Unregisters all listeners to this signal.
+     */
+    void removeAll();
 }

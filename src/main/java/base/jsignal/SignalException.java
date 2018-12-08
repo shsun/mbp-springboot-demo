@@ -1,19 +1,26 @@
-// http://paulmoore.mit-license.org/
-
 package base.jsignal;
 
 /**
  * General exception for Signals.
  */
-public final class SignalException extends RuntimeException
-{
-	private static final long serialVersionUID = 1L;
+public final class SignalException extends RuntimeException {
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
 
-	protected SignalException(String message) {
-		super(message);
-	}
+    /**
+     * @param message
+     */
+    protected SignalException(String message) {
+        super(message);
+    }
 
-	protected SignalException(String message, Exception inner) {
-		super(message, inner);
-	}
+    /**
+     * @param message
+     * @param inner
+     */
+    protected SignalException(String message, Exception inner) {
+        super(message, inner);
+    }
 }
