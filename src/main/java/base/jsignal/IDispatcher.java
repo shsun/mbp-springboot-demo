@@ -2,6 +2,8 @@ package base.jsignal;
 
 /**
  * Defines an interface for event dispatching types.
+ *
+ * @author sh
  */
 public interface IDispatcher {
 

@@ -1,10 +1,12 @@
 package base.jsignal;
 
 /**
+ * @author sh
+ *
  * Utility class which contains static methods to operate on signal instances.
  * Notably, it can create wrappers to existing signals to add functionality.
  *
- * @author sh
+ *
  */
 public class Signals {
 
@@ -30,6 +32,9 @@ public class Signals {
     }
 }
 
+/**
+ * @author sh
+ */
 class SynchronizedSignal implements ISignalOwner {
     /**
      *
@@ -49,6 +54,7 @@ class SynchronizedSignal implements ISignalOwner {
      * @param addOnce  if true, once this signal has dispatched the listener will be unregistered to this signal
      * @return
      */
+    @Override
     public synchronized Object add(Object listener, String callback, boolean addOnce) {
         return signal.add(listener, callback, addOnce);
     }
@@ -57,6 +63,7 @@ class SynchronizedSignal implements ISignalOwner {
      * @param listener the listener to remove
      * @return
      */
+    @Override
     public synchronized boolean remove(Object listener) {
         return signal.remove(listener);
     }
@@ -66,6 +73,7 @@ class SynchronizedSignal implements ISignalOwner {
      * @param listener the listener to check for
      * @return
      */
+    @Override
     public synchronized boolean containsListener(Object listener) {
         return signal.containsListener(listener);
     }
@@ -73,6 +81,7 @@ class SynchronizedSignal implements ISignalOwner {
     /**
      * @return
      */
+    @Override
     public synchronized int numListeners() {
         return signal.numListeners();
     }
@@ -80,6 +89,7 @@ class SynchronizedSignal implements ISignalOwner {
     /**
      *
      */
+    @Override
     public synchronized void removeAll() {
         ((ISignalOwner) signal).removeAll();
     }
@@ -87,6 +97,7 @@ class SynchronizedSignal implements ISignalOwner {
     /**
      * @param args the arguments to dispatch with
      */
+    @Override
     public synchronized void dispatch(Object... args) {
         ((IDispatcher) signal).dispatch(args);
     }

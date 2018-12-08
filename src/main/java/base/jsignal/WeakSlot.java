@@ -3,6 +3,9 @@ package base.jsignal;
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Method;
 
+/**
+ * @author sh
+ */
 final class WeakSlot implements ISlot {
     private final WeakReference<Object> listenerReference;
     private final Method delegate;

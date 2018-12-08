@@ -2,6 +2,8 @@ package base.jsignal;
 
 /**
  * Defines an interface for signals from which listeners can be added or removed.
+ *
+ * @author sh
  */
 public interface ISignal {
 

@@ -14,6 +14,7 @@ import java.util.PriorityQueue;
  * <p>
  * This is a port of Robert Penner's Signals for ActionScript 3.0
  *
+ * @author sh
  * @see Signal
  */
 public final class PrioritySignal<E extends Comparable<E>> extends Signal {

@@ -8,6 +8,8 @@ import java.util.Iterator;
 import java.util.Map;
 
 /**
+ * @author sh
+ *
  * The Signal class acts as an event dispatcher for
  * one type of event.  Each listener object registers
  * directly to the object, no constant event type
@@ -98,6 +100,7 @@ public class Signal implements ISignalOwner {
      *
      * @see ISignalOwner#removeAll()
      */
+    @Override
     public void removeAll() {
         listenerMap.clear();
     }

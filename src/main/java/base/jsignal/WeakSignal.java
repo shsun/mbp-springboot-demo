@@ -6,6 +6,8 @@ import java.util.Arrays;
 import java.util.Iterator;
 
 /**
+ * @author sh
+ *
  * The WeakSignal class is functionally the same as the Signal class, however,
  * it maintains weak references to its listeners that are automatically cleaned up.
  * It is useful for memory sensitive systems where Signal's can't be responsible
@@ -19,6 +21,12 @@ import java.util.Iterator;
  */
 final class WeakSignal extends Signal {
 
+    /**
+     * @param listener the listener object to add
+     * @param callback the callback method, as a String, to invoke when this signal is dispatched
+     * @param addOnce  if true, once this signal has dispatched the listener is removed from the listener map
+     * @return
+     */
     @Override
     public Object add(Object listener, String callback, boolean addOnce) {
         Method delegate;
@@ -33,6 +41,11 @@ final class WeakSignal extends Signal {
         return previous == null ? null : previous.getListener();
     }
 
+    /**
+     * @param args the argument list to dispatch to listenerMap.  The argument
+     *             list must have the same signature as the parameter list this Signal
+     *             was constructed with
+     */
     @Override
     public void dispatch(Object... args) {
         Iterator<ISlot> iterator = listenerMap.values().iterator();

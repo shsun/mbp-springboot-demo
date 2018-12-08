@@ -1,6 +1,8 @@
 package base.jsignal;
 
 /**
+ * @author sh
+ *
  * General exception for Signals.
  */
 public final class SignalException extends RuntimeException {
