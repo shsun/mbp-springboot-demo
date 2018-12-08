@@ -1,6 +1,6 @@
 package com.as.cyems.controller;
 
-import base.utils.XAsReflectorUtil;
+import base.utils.XReflectorUtil;
 import com.as.cyems.ErrorCode;
 import com.as.cyems.domain.User;
 import com.as.cyems.form.UserForm;
@@ -15,7 +15,6 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.google.common.collect.Lists;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
@@ -199,9 +198,9 @@ public class UserController extends ApiController {
     @PostMapping("/add")
     public boolean addZUser(@RequestBody UserForm form) {
         User user = new User();
-        user = (User) XAsReflectorUtil.merge(form, user);
+        user = (User) XReflectorUtil.merge(form, user);
         boolean b = userService.save(user);
-        //R<User> r = b ? R.ok(user) : R.failed(ErrorCode.TEST);
+        //R<User> r = b ? R.ok(user) : R.failed(XErrorCode.TEST);
         //return r;
         return b;
     }
@@ -271,7 +270,7 @@ public class UserController extends ApiController {
         System.err.println("??????????????");
 
         User user = new User();
-        user = (User) XAsReflectorUtil.merge(form, user);
+        user = (User) XReflectorUtil.merge(form, user);
         userService.save(user);
         System.out.println(" 这里手动抛出异常，自动回滚数据");
         throw new RuntimeException();

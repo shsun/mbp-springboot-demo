@@ -13,7 +13,7 @@ import com.google.common.base.Charsets;
 /**
  * @author richard
  */
-public class Servlets {
+public class XServlets {
 
     /**
      * 设置让浏览器弹出下载对话框的Header.

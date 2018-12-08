@@ -1,12 +1,12 @@
 package com.as.cyems.domain;
 
-import base.domain.SuperEntity;
+import base.domain.XSuperEntity;
 import com.baomidou.mybatisplus.annotation.TableId;
 
 import java.io.Serializable;
 import java.util.Date;
 
-public class User extends SuperEntity<User> {
+public class User extends XSuperEntity<User> {
 
     /**
      * 主键。 如果有主键, 必须写出哪个属性是主键, 没有的主键的话, 则可以不写。

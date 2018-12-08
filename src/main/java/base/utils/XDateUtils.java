@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
  * @Author: sunshanghai
  * @Date: 2018/11/26 09:07
  */
-public class XAsDateUtils {
+public class XDateUtils {
     /**
      * 是否为闰年
      *
@@ -21,7 +21,7 @@ public class XAsDateUtils {
      * @param dateTime
      * @return
      * @throws IllegalArgumentException
-     * @see XAsDateUtils#getDays(int year, int month)
+     * @see XDateUtils#getDays(int year, int month)
      */
     public static int getDays(LocalDateTime dateTime) throws IllegalArgumentException {
         return getDays(dateTime.getYear(), dateTime.getMonthValue());

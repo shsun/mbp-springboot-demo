@@ -9,7 +9,7 @@ import com.baomidou.mybatisplus.extension.activerecord.Model;
  *
  * @param <T>
  */
-public class SuperEntity<T extends Model> extends Model<T> {
+public class XSuperEntity<T extends Model> extends Model<T> {
 
 
     /**
@@ -32,7 +32,7 @@ public class SuperEntity<T extends Model> extends Model<T> {
         return tenantId;
     }
 
-    public SuperEntity setTenantId(Long tenantId) {
+    public XSuperEntity setTenantId(Long tenantId) {
         this.tenantId = tenantId;
         return this;
     }

@@ -10,7 +10,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 /**
  * springApplicationContext工具
  */
-public class SpringBeanRegisterUtil {
+public class XSpringBeanRegister {
 
     /**
      * 

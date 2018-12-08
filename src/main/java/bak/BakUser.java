@@ -2,7 +2,7 @@ package bak;
 
 import java.util.Date;
 
-import base.domain.SuperEntity;
+import base.domain.XSuperEntity;
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableLogic;
@@ -13,7 +13,7 @@ import com.as.cyems.domain.enums.PhoneEnum;
  * 用户表
  */
 @SuppressWarnings("serial")
-public class BakUser extends SuperEntity<BakUser> {
+public class BakUser extends XSuperEntity<BakUser> {
 
     /**
      * 名称

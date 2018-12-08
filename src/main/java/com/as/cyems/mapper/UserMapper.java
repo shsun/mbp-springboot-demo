@@ -11,7 +11,9 @@ import java.util.List;
 public interface UserMapper extends SuperMapper<User> {
 
     /**
-     * 自定义注入方法
+     * 自定义注入方法。删除全部记录
+     *
+     * @return
      */
     int deleteAll();
 
@@ -24,8 +26,11 @@ public interface UserMapper extends SuperMapper<User> {
     List<User> selectListBySQL();
 
     /**
-     * @param wrapper
+     * 根据指定条件查找
+     *
+     * @param wrapper 查询条件
      * @return
+     * @see Wrapper
      */
     List<User> selectListByWrapper(@Param("ew") Wrapper wrapper);
 }

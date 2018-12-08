@@ -14,7 +14,7 @@ import com.google.common.collect.Maps;
  * @author shsun
  * 
  */
-public class XAsReflectorUtil {
+public class XReflectorUtil {
 	/**
 	 * 
 	 * @param source
@@ -51,7 +51,7 @@ public class XAsReflectorUtil {
 		List<Map<String, Object>> rst = Lists.newArrayList();
 		for (int i = 0; i < list.size(); i++) {
 			Map<String, Object> map = Maps.newHashMap();
-			XAsReflectorUtil.merge(list.get(i), map);
+			XReflectorUtil.merge(list.get(i), map);
 			rst.add(map);
 		}
 		return rst;
