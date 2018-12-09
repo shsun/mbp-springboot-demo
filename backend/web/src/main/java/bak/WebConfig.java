@@ -1,19 +1,15 @@
 package bak;
 
-import base.JqueryStyleSortArgumentResolver;
+import base.XJqueryStyleSortArgumentResolver;
 import com.as.cyems.SessionInfoArgumentResolver;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.data.web.PageableHandlerMethodArgumentResolver;
 import org.springframework.data.web.SortArgumentResolver;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
-import org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.servlet.config.annotation.*;
@@ -85,7 +81,7 @@ public class WebConfig extends WebMvcConfigurationSupport {
 
 //        argumentResolvers.add(new LoginUserArgumentResolver());
 
-        SortArgumentResolver sort = new JqueryStyleSortArgumentResolver();
+        SortArgumentResolver sort = new XJqueryStyleSortArgumentResolver();
         PageableHandlerMethodArgumentResolver pageableHandlerMethodArgumentResolver = new PageableHandlerMethodArgumentResolver(sort);
         pageableHandlerMethodArgumentResolver.setSizeParameterName("pageSize");
         pageableHandlerMethodArgumentResolver.setPageParameterName("page");

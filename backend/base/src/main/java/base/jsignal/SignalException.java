@@ -3,7 +3,7 @@ package base.jsignal;
 /**
  * @author sh
  *
- * General exception for Signals.
+ * General exception for XSignals.
  */
 public final class SignalException extends RuntimeException {
     /**

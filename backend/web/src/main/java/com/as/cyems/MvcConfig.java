@@ -1,6 +1,6 @@
 package com.as.cyems;
 
-import base.JqueryStyleSortArgumentResolver;
+import base.XJqueryStyleSortArgumentResolver;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.springframework.context.annotation.Configuration;
@@ -51,7 +51,7 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
         // argumentResolvers.add(new LoginUserArgumentResolver());
 
         //
-        SortArgumentResolver sort = new JqueryStyleSortArgumentResolver();
+        SortArgumentResolver sort = new XJqueryStyleSortArgumentResolver();
         PageableHandlerMethodArgumentResolver pageableHandlerMethodArgumentResolver = new PageableHandlerMethodArgumentResolver(sort);
         pageableHandlerMethodArgumentResolver.setSizeParameterName("pageSize");
         pageableHandlerMethodArgumentResolver.setPageParameterName("page");
