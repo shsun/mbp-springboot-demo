@@ -20,6 +20,10 @@
         </dependency>
     </dependencies>
 
+    <properties>
+        <start-class>com.as.cyems.Application</start-class>
+    </properties>
+
     <build>
         <resources>
             <resource>
@@ -46,6 +50,17 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>2.1.0.RELEASE</version>
+                <configuration>
+                    <mainClass>${start-class}</mainClass>
+                    <layout>ZIP</layout>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <groupId>org.mybatis.generator</groupId>
