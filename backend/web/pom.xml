@@ -11,6 +11,12 @@
     <artifactId>web</artifactId>
     <packaging>war</packaging>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.as</groupId>
+            <artifactId>base</artifactId>
+        </dependency>
+    </dependencies>
 
     <build>
         <resources>
