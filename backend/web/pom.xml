@@ -12,6 +12,10 @@
         <version>1.0</version>
     </parent>
 
+    <properties>
+        <start-class>com.as.cyems.Application</start-class>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>com.as</groupId>
@@ -20,9 +24,6 @@
         </dependency>
     </dependencies>
 
-    <properties>
-        <start-class>com.as.cyems.Application</start-class>
-    </properties>
 
     <build>
         <resources>
