@@ -7,7 +7,6 @@
     <artifactId>base</artifactId>
     <packaging>jar</packaging>
 
-
     <parent>
         <groupId>com.as</groupId>
         <artifactId>cyems</artifactId>
@@ -15,9 +14,27 @@
     </parent>
 
     <properties>
+        <mybatisplus.version>3.0.4</mybatisplus.version>
     </properties>
 
     <dependencies>
+        <!-- mybatis-plus begin -->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>${mybatisplus.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus</artifactId>
+            <version>${mybatisplus.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-generator</artifactId>
+            <version>${mybatisplus.version}</version>
+        </dependency>
+        <!-- mybatis-plus end -->
     </dependencies>
 
 </project>
