@@ -18,7 +18,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 @ComponentScan(basePackages = {
         "base",
-        "com.as.cyems"})
+        "com.as"})
 public class Application {
 
     /**
