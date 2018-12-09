@@ -9,16 +9,7 @@ import {HeroService} from '../hero.service';
     styleUrls: ['./heroes.component.css']
 })
 export class HeroesComponent implements OnInit {
-
-    hero: Hero = {
-        id: 1,
-        name: null
-    };
-
     heroes: Hero[];
-
-    selectedHero: Hero;
-
 
     constructor(private heroService: HeroService) {
     }
@@ -26,7 +17,6 @@ export class HeroesComponent implements OnInit {
     ngOnInit() {
         this.getHeroes();
     }
-
 
     getHeroes(): void {
         this.heroService.getHeroes()
@@ -44,7 +34,9 @@ export class HeroesComponent implements OnInit {
             });
     }
 
-    onSelect(hero: Hero): void {
-        this.selectedHero = hero;
+    delete(hero: Hero): void {
+        this.heroes = this.heroes.filter(h => h !== hero);
+        this.heroService.deleteHero(hero).subscribe();
     }
+
 }

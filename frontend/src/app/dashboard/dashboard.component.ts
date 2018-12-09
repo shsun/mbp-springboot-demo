@@ -3,23 +3,25 @@ import {Hero} from '../hero';
 import {HeroService} from '../hero.service';
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+    selector: 'app-dashboard',
+    templateUrl: './dashboard.component.html',
+    styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  heroes: Hero[] = [];
+    heroes: Hero[] = [];
 
-  constructor(private heroService: HeroService) {
-  }
+    constructor(private heroService: HeroService) {
+    }
 
-  ngOnInit() {
-    this.getHeroes();
-  }
+    ngOnInit() {
+        this.getHeroes();
+    }
 
-  public getHeroes(): void {
-    // top 5
-    this.heroService.getHeroes()
-      .subscribe(heroes => this.heroes = heroes.slice(1, 5));
-  }
+    public getHeroes(): void {
+        // top 5
+        this.heroService.getHeroes('dashboard')
+            .subscribe(
+                heroes => this.heroes = heroes.slice(1, 5)
+            );
+    }
 }
