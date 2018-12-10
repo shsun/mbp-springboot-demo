@@ -7,7 +7,9 @@ import com.as.security.form.RoleQueryForm;
 import com.as.security.service.XARolePermissionMapService;
 import com.as.security.service.XSRoleService;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.api.ApiController;
 import com.baomidou.mybatisplus.extension.api.R;
+import io.swagger.annotations.Api;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -18,9 +20,10 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
+@Api(tags = "SysRole的增删改查")
 @Controller
 @RequestMapping("/security/roles")
-public class RoleController {
+public class RoleController extends ApiController {
 
     private static final Logger LOG = LoggerFactory.getLogger(RoleController.class);
 

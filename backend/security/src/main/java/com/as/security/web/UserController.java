@@ -7,12 +7,14 @@ import com.as.security.dto.OrgUserDto;
 import com.as.security.form.AssignForm;
 import com.as.security.form.ChangePasswordForm;
 import com.as.security.form.UserQueryForm;
-import com.as.security.service.XSOrganizationService;
 import com.as.security.service.XAUserOrgMapService;
 import com.as.security.service.XAUserRoleMapService;
+import com.as.security.service.XSOrganizationService;
 import com.as.security.service.XSUserService;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.api.ApiController;
 import com.baomidou.mybatisplus.extension.api.R;
+import io.swagger.annotations.Api;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
@@ -26,9 +28,10 @@ import java.util.Map;
 
 import static java.util.stream.Collectors.toList;
 
+@Api(tags = "SysUser的增删改查")
 @RestController
 @RequestMapping("/security/users")
-public class UserController {
+public class UserController extends ApiController {
     /**
      * 日志
      */
@@ -53,7 +56,7 @@ public class UserController {
      * 查询
      *
      * @param page 分页
-     * @param form        查询条件
+     * @param form 查询条件
      * @return
      */
     @GetMapping

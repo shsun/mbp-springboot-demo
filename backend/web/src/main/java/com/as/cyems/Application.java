@@ -12,10 +12,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 /**
  * https://blog.csdn.net/qq_35846773/article/details/80992155
  */
-@EnableTransactionManagement
 @SpringBootApplication
-@EnableAutoConfiguration
-@EnableSwagger2
 @ComponentScan(basePackages = {
         "base",
         "com.as"})

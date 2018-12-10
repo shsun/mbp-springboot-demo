@@ -12,7 +12,9 @@ import springfox.documentation.service.ApiInfo;
 import springfox.documentation.service.Parameter;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+@EnableSwagger2
 @Configuration
 public class Swagger2 {
     /*
@@ -32,7 +34,7 @@ public class Swagger2 {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.as.cyems.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.as"))
                 .paths(PathSelectors.any())
                 .build();
     }
@@ -41,8 +43,8 @@ public class Swagger2 {
     @SuppressWarnings("deprecation")
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("朝阳能源管理系统Restful-API")
-                .description("朝阳能源管理系统Restful-API")
+                .title("cyems Restful-API")
+                .description("cyems Restful-API")
                 .version("1.0")
                 .build();
     }

@@ -5,7 +5,9 @@ import com.as.security.form.PermissionQueryForm;
 import com.as.security.service.XARolePermissionMapService;
 import com.as.security.service.XSPermissionService;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.api.ApiController;
 import com.baomidou.mybatisplus.extension.api.R;
+import io.swagger.annotations.Api;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.validation.annotation.Validated;
@@ -13,9 +15,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Api(tags = "SysPermission的增删改查")
 @RestController
 @RequestMapping("/security/permissions")
-public class PermissionController {
+public class PermissionController extends ApiController {
 
     private static final Logger LOG = LoggerFactory.getLogger(PermissionController.class);
     private final XSPermissionService permissionService;

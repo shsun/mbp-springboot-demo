@@ -6,8 +6,10 @@ import com.as.security.dto.OrgDto;
 import com.as.security.dto.OrgUserDto;
 import com.as.security.service.XSOrganizationService;
 import com.as.security.service.XSUserService;
+import com.baomidou.mybatisplus.extension.api.ApiController;
 import com.baomidou.mybatisplus.extension.api.R;
 import com.google.common.collect.Lists;
+import io.swagger.annotations.Api;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
@@ -18,9 +20,10 @@ import java.util.List;
 
 import static java.util.stream.Collectors.toList;
 
+@Api(tags = "SysOrganization的增删改查")
 @RestController
 @RequestMapping("/security/orgs")
-public class OrganizationController {
+public class OrganizationController extends ApiController {
 
     private static final Logger LOG = LoggerFactory.getLogger(OrganizationController.class);
     private final XSOrganizationService organizationService;
