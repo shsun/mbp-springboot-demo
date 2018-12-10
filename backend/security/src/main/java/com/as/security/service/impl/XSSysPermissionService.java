@@ -64,7 +64,8 @@ public class XSSysPermissionService extends ServiceImpl<SysPermissionMapper, Sys
 
     @Transactional(readOnly = true)
     public List<SysPermission> findAll() {
-        return permissionRepository.findAll();
+        // return permissionRepository.findAll();
+        return permissionRepository.selectList(null);
     }
 
     @Transactional

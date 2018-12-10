@@ -6,6 +6,7 @@ import com.as.security.domain.SysRole;
 import com.as.security.mapper.SysPermissionMapper;
 import com.as.security.mapper.SysRolePermissionMapMapper;
 import com.as.security.service.IXASysRolePermissionMapService;
+import com.as.security.service.IXSSysPermissionService;
 import com.google.common.collect.Lists;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,8 +27,10 @@ public class XASysRolePermissionMapService implements IXASysRolePermissionMapSer
 
     private final SysRolePermissionMapMapper rolePermissionMapRepository;
     private final SysPermissionMapper permissionRepository;
+    private final IXSSysPermissionService permissionService;
 
-    public XASysRolePermissionMapService(SysRolePermissionMapMapper rolePermissionMapRepository, SysPermissionMapper permissionRepository) {
+    public XASysRolePermissionMapService(IXSSysPermissionService permissionService,SysRolePermissionMapMapper rolePermissionMapRepository, SysPermissionMapper permissionRepository) {
+        this.permissionService = permissionService;
         this.rolePermissionMapRepository = rolePermissionMapRepository;
         this.permissionRepository = permissionRepository;
     }
@@ -36,7 +39,10 @@ public class XASysRolePermissionMapService implements IXASysRolePermissionMapSer
     @Transactional(readOnly = true)
     public List<KendoTreeNode> getCurrentPermissions(List<Integer> roleIds) {
         LOG.info("获取角色{}对应权限信息", roleIds);
-        List<SysPermission> allPermissions = this.permissionRepository.findAll();
+        //List<SysPermission> allPermissions = this.permissionRepository.findAll();
+
+        List<SysPermission> allPermissions = this.permissionService.findAll();
+
         List<SysPermission> enabledPermissions = allPermissions.stream()
                 .filter(p -> !p.getDisabled())
                 .collect(toList());

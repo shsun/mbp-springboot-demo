@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.as.security.mapper.SysRoleMapper">
 
-    <resultMap id="RoleResultMap" type="role">
+    <resultMap id="RoleResultMap" type="com.as.security.domain.SysRole">
         <result property="id" column="ID"/>
         <result property="identifier" column="IDENTIFIER"/>
         <result property="name" column="NAME"/>
@@ -90,7 +90,7 @@
     </insert>
     -->
 
-    <update id="update" parameterType="role">
+    <update id="update" parameterType="com.as.security.domain.SysRole">
         update t_security_roles
         set IDENTIFIER = #{identifier}
         , NAME = #{name}

@@ -19,21 +19,21 @@ import java.util.List;
 @Mapper
 public interface SysPermissionMapper extends BaseMapper<SysPermission> {
 
-    SysPermission findOne(Integer id);
+    // SysPermission findOne(Integer id);
 
-    List<SysPermission> findAll();
+    //List<SysPermission> findAll();
 
     //void insert(SysPermission permission);
 
-    void update(SysPermission permission);
+    //void update(SysPermission permission);
 
     void delete(Integer id);
 
-    SysPermission findByIdentifier(String identifier);
+    //SysPermission findByIdentifier(String identifier);
 
-    List<SysPermission> findByParams(PermissionQueryForm params);
+    //List<SysPermission> findByParams(PermissionQueryForm params);
 
     // List<PermissionExcel> findByParamsExcel(PermissionQueryForm params);
 
-    List<SysPermission> findByRoleId(Integer roleId);
+    // List<SysPermission> findByRoleId(Integer roleId);
 }

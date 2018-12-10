@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.as.security.mapper.SysOrganizationMapper">
 
-    <resultMap id="OrganizationResultMap" type="organization">
+    <resultMap id="OrganizationResultMap" type="com.as.security.domain.SysOrganization">
         <result property="id" column="ID"/>
         <result property="parentId" column="PARENT_ID"/>
         <result property="level" column="LEVEL"/>
@@ -24,7 +24,7 @@
         <result property="lastModifiedBy" column="LAST_MODIFIED_BY"/>
         <result property="lastModifiedDate" column="LAST_MODIFIED_DATE"/>
     </resultMap>
-    <resultMap id="OrganizationResultMapChild" type="organization">
+    <resultMap id="OrganizationResultMapChild" type="com.as.security.domain.SysOrganization">
 
         <result property="id" column="ID"/>
         <result property="parentId" column="PARENT_ID"/>
@@ -159,7 +159,7 @@
     </insert>
     -->
 
-    <update id="update" parameterType="organization">
+    <update id="update" parameterType="com.as.security.domain.SysOrganization">
         update t_security_orgs
         set NAME = #{name}
         , DESCRIPTION = #{description}

@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.as.security.mapper.SysPermissionMapper">
 
-    <resultMap id="PermissionResultMap" type="permission">
+    <resultMap id="PermissionResultMap" type="com.as.security.domain.SysPermission">
         <result property="id" column="ID"/>
         <result property="identifier" column="IDENTIFIER"/>
         <result property="name" column="NAME"/>
@@ -40,15 +40,20 @@
         from t_security_permissions
     </sql>
 
+    <!--
     <select id="findOne" resultMap="PermissionResultMap">
         <include refid="Base_SELECT"/>
         where id = #{id}
     </select>
+    -->
 
+    <!--
     <select id="findAll" resultMap="PermissionResultMap">
         <include refid="Base_SELECT"/>
     </select>
+    -->
 
+    <!--
     <select id="findByParams" resultMap="PermissionResultMap">
         <include refid="Base_SELECT"/>
         <where>
@@ -63,6 +68,7 @@
             </if>
         </where>
     </select>
+    -->
 
     <!--
     <select id="findByParamsExcel" resultMap="PermissionExcelResultMap">
@@ -81,10 +87,12 @@
     </select>
     -->
 
+    <!--
     <select id="findByIdentifier" resultMap="PermissionResultMap">
         <include refid="Base_SELECT"/>
         where IDENTIFIER = #{identifier}
     </select>
+    -->
 
     <!--
     <insert id="insert" useGeneratedKeys="true" parameterType="permission">
@@ -116,7 +124,8 @@
     -->
 
 
-    <update id="update" parameterType="permission">
+    <!--
+    <update id="update" parameterType="com.as.security.domain.SysPermission">
         update t_security_permissions
         set IDENTIFIER = #{identifier}
         , NAME = #{name}
@@ -126,6 +135,7 @@
         , LAST_MODIFIED_DATE = #{lastModifiedDate}
         where id = #{id}
     </update>
+    -->
 
     <delete id="delete" parameterType="int">
         DELETE FROM t_security_permissions

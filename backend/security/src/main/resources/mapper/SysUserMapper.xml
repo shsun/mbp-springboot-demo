@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.as.security.mapper.SysUserMapper">
 
-    <resultMap id="UserResultMap" type="user">
+    <resultMap id="UserResultMap" type="com.as.security.domain.SysUser">
         <result property="id" column="ID"/>
         <result property="loginName" column="LOGIN_NAME"/>
         <result property="name" column="NAME"/>
@@ -16,7 +16,7 @@
         <result property="lastModifiedBy" column="LAST_MODIFIED_BY"/>
         <result property="lastModifiedDate" column="LAST_MODIFIED_DATE"/>
     </resultMap>
-    <resultMap id="UserResultMapOrg" type="user">
+    <resultMap id="UserResultMapOrg" type="com.as.security.domain.SysUser">
         <result property="id" column="ID"/>
         <result property="loginName" column="LOGIN_NAME"/>
         <result property="name" column="NAME"/>
@@ -131,7 +131,7 @@
     -->
 
 
-    <update id="update" parameterType="user">
+    <update id="update" parameterType="com.as.security.domain.SysUser">
         update t_security_users
         set LOGIN_NAME = #{loginName}
         , NAME = #{name}
