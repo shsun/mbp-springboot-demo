@@ -1,6 +1,6 @@
 package com.as.security.shiro;
 
-import base.domain.LoginUser;
+import com.as.base.domain.LoginUser;
 
 import com.as.security.domain.User;
 import com.as.security.service.XAAuthorizationService;

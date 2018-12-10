@@ -1,9 +1,9 @@
 package com.as.security.service;
 
-import base.event.XEvent;
-import base.event.XEventType;
-import base.jsignal.IXSignal;
-import base.jsignal.XSignal;
+import com.as.base.event.XEvent;
+import com.as.base.event.XEventType;
+import com.as.base.jsignal.IXSignal;
+import com.as.base.jsignal.XSignal;
 import com.as.security.domain.Permission;
 import com.as.security.domain.Role;
 import com.as.security.form.RoleQueryForm;

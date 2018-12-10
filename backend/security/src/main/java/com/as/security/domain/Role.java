@@ -1,8 +1,8 @@
 package com.as.security.domain;
 
 
-import base.domain.Nameable;
-import base.domain.XSuperEntity;
+import com.as.base.domain.Nameable;
+import com.as.base.domain.XSuperEntity;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;

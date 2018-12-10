@@ -23,7 +23,7 @@
     </parent>
 
     <modules>
-        <module>base</module>
+        <module>com.as.base</module>
         <module>security</module>
         <module>web</module>
     </modules>

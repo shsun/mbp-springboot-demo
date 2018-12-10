@@ -1,6 +1,6 @@
 package com.as.cyems.domain;
 
-import base.domain.XSuperEntity;
+import com.as.base.domain.XSuperEntity;
 import com.baomidou.mybatisplus.annotation.TableId;
 
 import java.io.Serializable;

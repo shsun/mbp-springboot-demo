@@ -2,7 +2,7 @@ package bak;
 
 import java.util.Date;
 
-import base.domain.XSuperEntity;
+import com.as.base.domain.XSuperEntity;
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableLogic;

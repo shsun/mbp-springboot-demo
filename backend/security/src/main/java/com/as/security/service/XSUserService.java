@@ -1,8 +1,8 @@
 package com.as.security.service;
 
-import base.domain.LoginUser;
-import base.event.XEvent;
-import base.event.XEventType;
+import com.as.base.domain.LoginUser;
+import com.as.base.event.XEvent;
+import com.as.base.event.XEventType;
 import com.as.security.domain.User;
 import com.as.security.form.UserQueryForm;
 import com.as.security.repository.UserRepository;

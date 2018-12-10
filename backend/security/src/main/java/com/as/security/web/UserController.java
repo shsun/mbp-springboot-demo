@@ -1,6 +1,6 @@
 package com.as.security.web;
 
-import base.domain.KendoTreeNode;
+import com.as.base.domain.KendoTreeNode;
 import com.as.security.domain.Organization;
 import com.as.security.domain.User;
 import com.as.security.dto.OrgUserDto;

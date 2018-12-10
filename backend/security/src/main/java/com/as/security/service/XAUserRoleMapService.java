@@ -1,6 +1,6 @@
 package com.as.security.service;
 
-import base.domain.KendoTreeNode;
+import com.as.base.domain.KendoTreeNode;
 import com.as.security.domain.Role;
 import com.as.security.domain.User;
 import com.as.security.repository.RoleRepository;

@@ -1,6 +1,6 @@
 package com.as.security.web;
 
-import base.domain.KendoTreeNode;
+import com.as.base.domain.KendoTreeNode;
 import com.as.security.domain.Role;
 import com.as.security.form.AssignForm;
 import com.as.security.form.RoleQueryForm;

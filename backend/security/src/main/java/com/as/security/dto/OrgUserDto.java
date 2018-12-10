@@ -1,6 +1,6 @@
 package com.as.security.dto;
 
-import base.domain.XSuperEntity;
+import com.as.base.domain.XSuperEntity;
 import lombok.Data;
 
 /**

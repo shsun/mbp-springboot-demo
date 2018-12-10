@@ -1,6 +1,6 @@
 package bak;
 
-import base.XJqueryStyleSortArgumentResolver;
+import com.as.base.XJqueryStyleSortArgumentResolver;
 import com.as.cyems.SessionInfoArgumentResolver;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;

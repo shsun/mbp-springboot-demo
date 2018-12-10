@@ -1,6 +1,6 @@
 package com.as.cyems;
 
-import base.XJqueryStyleSortArgumentResolver;
+import com.as.base.XJqueryStyleSortArgumentResolver;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.springframework.context.annotation.Configuration;

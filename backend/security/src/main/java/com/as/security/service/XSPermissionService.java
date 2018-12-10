@@ -1,7 +1,7 @@
 package com.as.security.service;
 
-import base.event.XEvent;
-import base.event.XEventType;
+import com.as.base.event.XEvent;
+import com.as.base.event.XEventType;
 import com.as.security.domain.Permission;
 import com.as.security.form.PermissionQueryForm;
 import com.as.security.repository.PermissionRepository;
