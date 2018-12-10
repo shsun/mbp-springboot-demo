@@ -22,11 +22,13 @@
             <artifactId>base</artifactId>
             <version>1.0</version>
         </dependency>
+        <!--
         <dependency>
             <groupId>com.as</groupId>
             <artifactId>security</artifactId>
             <version>1.0</version>
         </dependency>
+        -->
     </dependencies>
 
     <build>
