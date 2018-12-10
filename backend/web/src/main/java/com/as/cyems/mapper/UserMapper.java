@@ -3,11 +3,15 @@ package com.as.cyems.mapper;
 import com.as.cyems.SuperMapper;
 import com.as.cyems.domain.User;
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
+@Mapper
 public interface UserMapper extends SuperMapper<User> {
 
     /**

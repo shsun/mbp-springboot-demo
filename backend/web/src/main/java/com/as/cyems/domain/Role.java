@@ -1,8 +1,10 @@
 package com.as.cyems.domain;
 
+import com.as.base.domain.XSuperEntity;
+
 import java.io.Serializable;
 
-public class Role implements Serializable {
+public class Role extends XSuperEntity<Role> implements Serializable {
     private Integer roleId;
 
     private String roleKey;

@@ -75,10 +75,11 @@ public class MybatisPlusConfig {
      * {@code @MapperScan("com.as.cyems.mapper*")}
      * 这里可以扩展，比如使用配置文件来配置扫描Mapper的路径
      */
+    /*
     @Bean
     public MapperScannerConfigurer mapperScannerConfigurer() {
         MapperScannerConfigurer scannerConfigurer = new MapperScannerConfigurer();
-        scannerConfigurer.setBasePackage("com.as.cyems.mapper*");
+        scannerConfigurer.setBasePackage("com.as.cyems.mapper*,com.as.security.mapper*");
         return scannerConfigurer;
     }
 
@@ -86,7 +87,7 @@ public class MybatisPlusConfig {
     public H2KeyGenerator getH2KeyGenerator() {
         return new H2KeyGenerator();
     }
-
+    */
 
     /**
      * 性能分析拦截器，不建议生产使用

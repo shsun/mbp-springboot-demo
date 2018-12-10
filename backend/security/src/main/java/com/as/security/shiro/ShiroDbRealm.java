@@ -2,9 +2,9 @@ package com.as.security.shiro;
 
 import com.as.base.domain.LoginUser;
 
-import com.as.security.domain.User;
-import com.as.security.service.XAAuthorizationService;
-import com.as.security.service.XSUserService;
+import com.as.security.domain.SysUser;
+import com.as.security.service.impl.XASysAuthorizationService;
+import com.as.security.service.impl.XSSysUserService;
 
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authc.credential.PasswordMatcher;
@@ -23,11 +23,11 @@ import java.util.List;
 @Component
 public class ShiroDbRealm extends AuthorizingRealm {
 
-    private final XSUserService userService;
-    private final XAAuthorizationService authorizationService;
+    private final XSSysUserService userService;
+    private final XASysAuthorizationService authorizationService;
 
-    public ShiroDbRealm(XSUserService userService,
-                        XAAuthorizationService authorizationService) {
+    public ShiroDbRealm(XSSysUserService userService,
+                        XASysAuthorizationService authorizationService) {
         setCredentialsMatcher(new PasswordMatcher());
         this.authorizationService = authorizationService;
         this.userService = userService;
@@ -46,7 +46,7 @@ public class ShiroDbRealm extends AuthorizingRealm {
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken upToken) throws AuthenticationException {
         UsernamePasswordToken token = (UsernamePasswordToken) upToken;
-        User user = userService.findOne(token.getUsername());
+        SysUser user = userService.findOne(token.getUsername());
         if (user == null) {
             throw new UnknownAccountException(token.getUsername() + "不存在");
         }

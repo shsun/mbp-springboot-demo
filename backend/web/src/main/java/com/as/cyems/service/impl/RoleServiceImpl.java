@@ -8,7 +8,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
 /**
- * Role 表数据服务层接口实现类
+ * SysRole 表数据服务层接口实现类
  */
 @Service
 public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements IService<Role> {

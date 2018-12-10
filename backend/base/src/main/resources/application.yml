@@ -32,9 +32,10 @@ spring:
 #mybatis
 mybatis-plus:
   mapper-locations: classpath*:/mapper/*Mapper.xml
+  #mapperScanPackage: com.as.security.mapper,com.as.cyems.mapper
   #实体扫描，多个package用逗号或者分号分隔
-  typeAliasesPackage: com.as.cyems.domain,com.as.security.domain
-  typeEnumsPackage: com.as.cyems.domain.enums
+  #typeAliasesPackage: com.as.cyems.domain,com.as.security.domain
+  #typeEnumsPackage: com.as.cyems.domain.enums
   global-config:
     # 数据库相关配置
     db-config:

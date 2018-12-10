@@ -200,7 +200,7 @@ public class UserController extends ApiController {
         User user = new User();
         user = (User) XReflectorUtil.merge(form, user);
         boolean b = userService.save(user);
-        //R<User> r = b ? R.ok(user) : R.failed(XErrorCode.TEST);
+        //R<SysUser> r = b ? R.ok(user) : R.failed(XErrorCode.TEST);
         //return r;
         return b;
     }

@@ -23,7 +23,7 @@
     </parent>
 
     <modules>
-        <module>com.as.base</module>
+        <module>base</module>
         <module>security</module>
         <module>web</module>
     </modules>
@@ -118,13 +118,13 @@
 
     <repositories>
         <!--
-        <repository>
+        <mapper>
             <id>nexus</id>
             <url>http://192.1.114.170:10001/repository/maven-public</url>
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
-        </repository>
+        </mapper>
         -->
         <repository>
             <id>nexus-aliyun</id>
