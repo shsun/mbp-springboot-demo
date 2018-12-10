@@ -19,7 +19,7 @@ import java.util.List;
 /**
  * SpringMVC配置.
  *
- * @author richard
+ * @author who
  */
 @Configuration
 public class MvcConfig extends WebMvcConfigurerAdapter {

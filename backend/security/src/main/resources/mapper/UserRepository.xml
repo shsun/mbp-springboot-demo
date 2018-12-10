@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.as.security.repository.UserRepository">
+
+    <resultMap id="UserResultMap" type="user">
+        <result property="id" column="ID"/>
+        <result property="loginName" column="LOGIN_NAME"/>
+        <result property="name" column="NAME"/>
+        <result property="description" column="DESCRIPTION"/>
+        <result property="mobile" column="MOBILE"/>
+        <result property="orgId" column="ORG_ID"/>
+        <result property="password" column="PASSWORD"/>
+        <result property="disabled" column="DISABLED"/>
+        <result property="createdBy" column="CREATED_BY"/>
+        <result property="createdDate" column="CREATED_DATE"/>
+        <result property="lastModifiedBy" column="LAST_MODIFIED_BY"/>
+        <result property="lastModifiedDate" column="LAST_MODIFIED_DATE"/>
+    </resultMap>
+    <resultMap id="UserResultMapOrg" type="user">
+        <result property="id" column="ID"/>
+        <result property="loginName" column="LOGIN_NAME"/>
+        <result property="name" column="NAME"/>
+        <result property="description" column="DESCRIPTION"/>
+        <result property="mobile" column="MOBILE"/>
+        <result property="orgId" column="ORG_ID"/>
+        <result property="password" column="PASSWORD"/>
+        <result property="disabled" column="DISABLED"/>
+        <result property="createdBy" column="CREATED_BY"/>
+        <result property="createdDate" column="CREATED_DATE"/>
+        <result property="lastModifiedBy" column="LAST_MODIFIED_BY"/>
+        <result property="lastModifiedDate" column="LAST_MODIFIED_DATE"/>
+        <result property="checked" column="CHECKED"/>
+    </resultMap>
+
+    <sql id="Base_Columns">
+        ID,
+        LOGIN_NAME,
+        NAME,
+        DESCRIPTION,
+        MOBILE,
+        ORG_ID,
+        DISABLED,
+        PASSWORD,
+        CREATED_BY,
+        CREATED_DATE,
+        LAST_MODIFIED_BY,
+        LAST_MODIFIED_DATE
+    </sql>
+
+    <sql id="Base_SELECT">
+        SELECT
+        <include refid="com.as.security.repository.UserRepository.Base_Columns"/>
+        from t_security_users
+    </sql>
+
+    <select id="findOne" resultMap="UserResultMap">
+        <include refid="Base_SELECT"/>
+        where id = #{id}
+    </select>
+
+    <select id="findAll" resultMap="UserResultMap">
+        <include refid="Base_SELECT"/>
+    </select>
+    <select id="findByOrgId" resultMap="UserResultMap">
+        <include refid="Base_SELECT"/>
+        where ORG_ID = #{id}
+    </select>
+
+    <select id="findByLoginName" resultMap="UserResultMap">
+        <include refid="Base_SELECT"/>
+        where LOGIN_NAME = #{id}
+    </select>
+    <select id="findByOrg" resultMap="UserResultMap">
+        SELECT * ,
+        (CASE WHEN ORG_ID > 0 THEN 'TRUE' ELSE 'FALSE' END) as CHECKED
+        FROM T_SECURITY_USERS
+        where ORG_ID = #{id} OR ORG_ID IS NULL OR ORG_ID=''
+    </select>
+
+    <!--
+    <select id="findByParams" resultMap="UserResultMap">
+        <include refid="Base_SELECT"/>
+        <where>
+            <if test="disabled != null">
+                DISABLED = #{disabled}
+            </if>
+            <if test="keyword != null and keyword != '' ">
+                AND (LOGIN_NAME like #{keyword}
+                or NAME like #{keyword}
+                or DESCRIPTION like #{keyword}
+                )
+            </if>
+        </where>
+    </select>
+    -->
+
+
+    <!--
+    <insert id="insert" useGeneratedKeys="true"  parameterType="user">
+        <selectKey keyProperty="id" resultType="int" order="BEFORE">
+            SELECT SECURITY_SEQUENCE.nextVal from dual
+        </selectKey>
+        insert into t_security_users (
+        ID,
+        LOGIN_NAME,
+        NAME,
+        DESCRIPTION,
+        MOBILE,
+        ORG_ID,
+        DISABLED,
+        PASSWORD,
+        CREATED_BY,
+        CREATED_DATE,
+        LAST_MODIFIED_BY,
+        LAST_MODIFIED_DATE
+        )values (
+        #{id},
+        #{loginName},
+        #{name},
+        #{description},
+        #{mobile},
+        #{orgId},
+        #{disabled},
+        #{password},
+        #{createdBy},
+        #{createdDate},
+        #{lastModifiedBy},
+        #{lastModifiedDate}
+        )
+    </insert>
+    -->
+
+
+    <update id="update" parameterType="user">
+        update t_security_users
+        set LOGIN_NAME = #{loginName}
+        , NAME = #{name}
+        , DESCRIPTION = #{description}
+        , MOBILE = #{mobile}
+        , ORG_ID = #{orgId}
+        , DISABLED = #{disabled}
+        , PASSWORD = #{password}
+        , LAST_MODIFIED_BY = #{lastModifiedBy}
+        , LAST_MODIFIED_DATE = #{lastModifiedDate}
+        where id = #{id}
+    </update>
+    <update id="updateOrg">
+        update t_security_users
+        set ORG_ID = #{orgId}
+        where id = #{id}
+    </update>
+    <update id="updateOrgNull">
+        update t_security_users
+        set ORG_ID = NULL
+        where ORG_ID = #{orgId}
+    </update>
+
+    <delete id="delete" parameterType="int">
+        DELETE FROM t_security_users
+        where id = #{id}
+    </delete>
+
+
+</mapper>

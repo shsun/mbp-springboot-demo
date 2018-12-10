@@ -17,7 +17,7 @@ import static com.google.common.base.CaseFormat.UPPER_UNDERSCORE;
 /**
  * 解析排序.
  *
- * @author richard
+ * @author who
  */
 
 public class XJqueryStyleSortArgumentResolver implements SortArgumentResolver {

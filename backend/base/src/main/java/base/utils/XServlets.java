@@ -11,7 +11,7 @@ import org.springframework.http.HttpHeaders;
 import com.google.common.base.Charsets;
 
 /**
- * @author richard
+ * @author who
  */
 public class XServlets {
 
