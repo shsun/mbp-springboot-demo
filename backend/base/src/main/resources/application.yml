@@ -1,13 +1,13 @@
 #app
 server:
-    port: 8080
-
+  port: 8080
+  context-path: /api
+#
 #spring
 spring:
   # mysql
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
-    #type: com.zaxxer.hikari.HikariDataSource
     driverClassName: com.mysql.cj.jdbc.Driver
     username: root
     password: 123456
@@ -17,12 +17,23 @@ spring:
     initialSize: 2
     minIdle: 2
     maxActive: 3000
-
+    tomcat:
+      initial-size: 3
+  http:
+    encoding:
+      force: true
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 30MB
+  aop:
+    proxy-target-class: true
+#
+#
 #mybatis
 mybatis-plus:
-  mapper-locations: classpath:/mapper/*Mapper.xml
+  mapper-locations: classpath*:/mapper/*Mapper.xml
   #实体扫描，多个package用逗号或者分号分隔
-  typeAliasesPackage: com.as.cyems.domain
+  typeAliasesPackage: com.as.cyems.domain,com.as.security.domain
   typeEnumsPackage: com.as.cyems.domain.enums
   global-config:
     # 数据库相关配置
@@ -43,3 +54,9 @@ mybatis-plus:
   configuration:
     map-underscore-to-camel-case: true
     cache-enabled: false
+#
+#
+logging:
+  level:
+    org: INFO
+    org.springframework.web.filter.CommonsRequestLoggingFilter: TRACE
