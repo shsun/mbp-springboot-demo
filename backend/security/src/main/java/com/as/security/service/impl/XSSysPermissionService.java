@@ -70,7 +70,11 @@ public class XSSysPermissionService extends ServiceImpl<SysPermissionMapper, Sys
 
     @Transactional
     public SysPermission create(SysPermission permission) {
-        SysPermission oldPermission = permissionRepository.findByIdentifier(permission.getIdentifier());
+
+        Wrapper<SysPermission> wrapper = new QueryWrapper<SysPermission>().lambda().eq(SysPermission::getIdentifier, permission.getIdentifier());
+        SysPermission oldPermission = permissionRepository.selectOne(wrapper);
+
+        // SysPermission oldPermission = permissionRepository.findByIdentifier(permission.getIdentifier());
         checkState(oldPermission == null, "标识符为%s的权限已存在", permission.getIdentifier());
 
         permissionRepository.insert(permission);
@@ -79,16 +83,24 @@ public class XSSysPermissionService extends ServiceImpl<SysPermissionMapper, Sys
 
     @Transactional
     public SysPermission modify(SysPermission permission) {
-        SysPermission oldPermission = permissionRepository.findOne(permission.getId());
+        Wrapper<SysPermission> wrapper;
+
+        wrapper = new QueryWrapper<SysPermission>().lambda().eq(SysPermission::getIdentifier, permission.getId());
+        SysPermission oldPermission = permissionRepository.selectOne(wrapper);
+
+        // SysPermission oldPermission = permissionRepository.findOne(permission.getId());
         checkNotNull(oldPermission, "ID为%s的权限不存在，无法修改", permission.getId());
 
         //如果修改了标识符，校验标识符是否已存在
         if (!oldPermission.getIdentifier().equals(permission.getIdentifier())) {
-            SysPermission perm = permissionRepository.findByIdentifier(permission.getIdentifier());
+            wrapper = new QueryWrapper<SysPermission>().lambda().eq(SysPermission::getIdentifier, permission.getIdentifier());
+            SysPermission perm = permissionRepository.selectOne(wrapper);
+            //SysPermission perm = permissionRepository.findByIdentifier(permission.getIdentifier());
             checkState(perm == null, "标识符为%s的权限已存在", permission.getIdentifier());
         }
 
-        permissionRepository.update(permission);
+        this.updateById(permission);
+        // permissionRepository.update(permission);
         return permission;
     }
 
@@ -101,7 +113,11 @@ public class XSSysPermissionService extends ServiceImpl<SysPermissionMapper, Sys
 
     @Transactional
     public void remove(int id) {
-        SysPermission permission = permissionRepository.findOne(id);
+
+        Wrapper<SysPermission> wrapper = new QueryWrapper<SysPermission>().lambda().eq(SysPermission::getId, id);
+        SysPermission permission = permissionRepository.selectOne(wrapper);
+        // SysPermission permission = permissionRepository.findOne(id);
+
         checkNotNull(permission, "ID为%s的权限不存在", id);
         LOG.info("删除权限{}", permission);
         permissionRepository.delete(id);
