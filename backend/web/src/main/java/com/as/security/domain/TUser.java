@@ -21,8 +21,8 @@ import javax.validation.constraints.Size;
 @Getter
 @Setter
 @ToString
-public class SysUser extends XSuperEntity<SysUser> implements Nameable<Integer> {
-//public class SysUser extends AbstractAuditable implements Persistable<Integer> {
+public class TUser extends XSuperEntity<TUser> implements Nameable<Integer> {
+//public class TUser extends AbstractAuditable implements Persistable<Integer> {
 
     /**
      *
@@ -32,7 +32,7 @@ public class SysUser extends XSuperEntity<SysUser> implements Nameable<Integer> 
     /**
      *
      */
-    private Integer orgid;
+    // private Integer orgid;
 
     /**
      *
@@ -82,8 +82,8 @@ public class SysUser extends XSuperEntity<SysUser> implements Nameable<Integer> 
     private Boolean checked = false;
 
 
-    public static SysUser of(String loginName, String name) {
-        SysUser user = new SysUser();
+    public static TUser of(String loginName, String name) {
+        TUser user = new TUser();
         user.setLoginName(loginName);
         user.setName(name);
         return user;

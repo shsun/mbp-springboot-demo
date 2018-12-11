@@ -40,6 +40,10 @@ public class SysRole extends XSuperEntity<SysRole> implements Nameable<Integer> 
     @SafeHtml(message = "不能包含html标签")
     @Size(min = 4, max = 30, message = "4到30个字符")
     private String name;
+
+    /**
+     *
+     */
     @NotEmpty(message = "不能为空")
     @SafeHtml(message = "不能包含html标签")
     @Size(min = 4, max = 30, message = "4到30个字符")
@@ -48,7 +52,15 @@ public class SysRole extends XSuperEntity<SysRole> implements Nameable<Integer> 
      *
      */
     private String description;
+
+    /**
+     *
+     */
     private Boolean disabled = false;
+
+    /**
+     *
+     */
     private List<SysPermission> permissions;
 
 

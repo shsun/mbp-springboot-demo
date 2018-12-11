@@ -2,7 +2,7 @@ package com.as.security.web;
 
 import com.as.base.domain.KendoTreeNode;
 import com.as.security.domain.SysOrganization;
-import com.as.security.domain.SysUser;
+import com.as.security.domain.TUser;
 import com.as.security.dto.OrgUserDto;
 import com.as.security.form.AssignForm;
 import com.as.security.form.ChangePasswordForm;
@@ -59,7 +59,7 @@ public class SysUserController extends ApiController {
      * @return
      */
     @GetMapping
-    public IPage<SysUser> query(com.baomidou.mybatisplus.extension.plugins.pagination.Page page, UserQueryForm form) {
+    public IPage<TUser> query(com.baomidou.mybatisplus.extension.plugins.pagination.Page page, UserQueryForm form) {
         LOG.info("查询用户:{}.{}", page, form);
 //        LocalDate
 //                LocalDateTime
@@ -73,7 +73,7 @@ public class SysUserController extends ApiController {
      * @return
      */
     @PostMapping
-    public SysUser create(@Validated @RequestBody SysUser user) {
+    public TUser create(@Validated @RequestBody TUser user) {
         LOG.info("创建用户{}", user);
         userService.create(user);
         return user;
@@ -86,7 +86,7 @@ public class SysUserController extends ApiController {
      * @return
      */
     @PutMapping
-    public SysUser modify(@Validated @RequestBody SysUser user) {
+    public TUser modify(@Validated @RequestBody TUser user) {
         LOG.info("修改用户{}", user);
         userService.modify(user);
         return user;

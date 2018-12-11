@@ -1,7 +1,7 @@
 package com.as.security.mapper;
 
 import com.as.security.domain.SysRole;
-import com.as.security.domain.SysUser;
+import com.as.security.domain.TUser;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
@@ -32,7 +32,7 @@ public interface SysUserRoleMapMapper {
     /**
      * 查找权限下的所有角色.
      */
-    List<SysUser> findUserByRoleId(Integer roleId);
+    List<TUser> findUserByRoleId(Integer roleId);
 
     /**
      * 删除权限下的所有角色.

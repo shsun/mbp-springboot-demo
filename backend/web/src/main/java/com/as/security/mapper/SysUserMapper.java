@@ -1,13 +1,10 @@
 package com.as.security.mapper;
 
-import com.as.security.domain.SysUser;
-import com.as.security.form.UserQueryForm;
+import com.as.security.domain.TUser;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
-
-import java.util.List;
 
 /**
  * 用户DAO.
@@ -16,28 +13,28 @@ import java.util.List;
  */
 @Component
 @Mapper
-public interface SysUserMapper extends BaseMapper<SysUser> {
-
-    SysUser findOne(Integer id);
-
-    List<SysUser> findAll();
-
-    // void insert(SysUser permission);
-
-    void update(SysUser permission);
-
+public interface SysUserMapper extends BaseMapper<TUser> {
+    //
+//    TUser findOne(Integer id);
+//
+//    List<TUser> findAll();
+//
+//    // void insert(TUser permission);
+//
+//    void update(TUser permission);
+//
     void updateOrg(@Param("id") Integer id, @Param("orgId") Integer orgId);
 
     void updateOrgNull(@Param("orgId") Integer orgId);
+//
+//    void delete(Integer id);
+//
+//    TUser findByLoginName(String loginName);
+//
+//    List<TUser> findByOrgId(Integer id);
 
-    void delete(Integer id);
+    //List<TUser> findByOrg(Integer id);
 
-    SysUser findByLoginName(String loginName);
-
-    List<SysUser> findByOrgId(Integer id);
-
-    List<SysUser> findByOrg(Integer id);
-
-    List<SysUser> findByParams(UserQueryForm params);
+    // List<TUser> findByParams(UserQueryForm params);
 
 }

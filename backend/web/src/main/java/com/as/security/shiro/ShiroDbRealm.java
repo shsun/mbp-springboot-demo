@@ -2,7 +2,7 @@ package com.as.security.shiro;
 
 import com.as.base.domain.LoginUser;
 
-import com.as.security.domain.SysUser;
+import com.as.security.domain.TUser;
 import com.as.security.service.impl.XASysAuthorizationService;
 import com.as.security.service.impl.XSSysUserService;
 
@@ -46,7 +46,7 @@ public class ShiroDbRealm extends AuthorizingRealm {
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken upToken) throws AuthenticationException {
         UsernamePasswordToken token = (UsernamePasswordToken) upToken;
-        SysUser user = userService.findOne(token.getUsername());
+        TUser user = userService.findOne(token.getUsername());
         if (user == null) {
             throw new UnknownAccountException(token.getUsername() + "不存在");
         }

@@ -2,7 +2,7 @@ package com.as.security.service;
 
 import com.as.base.domain.KendoTreeNode;
 import com.as.security.domain.SysRole;
-import com.as.security.domain.SysUser;
+import com.as.security.domain.TUser;
 
 import java.util.List;
 
@@ -17,7 +17,7 @@ public interface IXASysUserRoleMapService {
 
     public void assignRoles(Integer userId, List<Integer> roleIds);
 
-    public void deleteUser(SysUser user);
+    public void deleteUser(TUser user);
 
     public void deleteRole(SysRole role);
 }

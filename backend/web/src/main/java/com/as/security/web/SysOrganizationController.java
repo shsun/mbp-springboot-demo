@@ -1,7 +1,7 @@
 package com.as.security.web;
 
 import com.as.security.domain.SysOrganization;
-import com.as.security.domain.SysUser;
+import com.as.security.domain.TUser;
 import com.as.security.dto.OrgDto;
 import com.as.security.dto.OrgUserDto;
 import com.as.security.service.impl.XSSysOrganizationService;
@@ -46,9 +46,9 @@ public class SysOrganizationController extends ApiController {
         List<OrgUserDto> dtos = Lists.newArrayList();
         if (orgs.isEmpty()) {
             // 子节点是人
-            List<SysUser> users = userService.findByOrgId(parentId);
+            List<TUser> users = userService.findByOrgId(parentId);
             dtos = users.stream()
-                    .map((SysUser o) -> {
+                    .map((TUser o) -> {
                         OrgUserDto dto = new OrgUserDto("u", false);
                         dto.setParentId(parentId);
                         BeanUtils.copyProperties(o, dto);
@@ -71,7 +71,7 @@ public class SysOrganizationController extends ApiController {
     @PostMapping
     public R<SysOrganization> create(@Validated @RequestBody OrgDto orgDto) throws Exception {
         LOG.info("创建组织机构{}", orgDto);
-        List<SysUser> users = userService.findByOrgId(orgDto.getParentId());
+        List<TUser> users = userService.findByOrgId(orgDto.getParentId());
         if (!users.isEmpty()) {
             throw new Exception("当前组织机构下有用户，不能添加子组织机构");
         }
@@ -95,9 +95,9 @@ public class SysOrganizationController extends ApiController {
         if (orgs.isEmpty()) {
             //如果没有子组织结构，删除组织结构时，需要删除人员与组织机构之间的关系
             //首先获取当前节点下的所有用户，
-            List<SysUser> users = userService.findByOrgId(ids[0]);
+            List<TUser> users = userService.findByOrgId(ids[0]);
             List<Integer> userIds = users.stream()
-                    .map((SysUser o) -> {
+                    .map((TUser o) -> {
                         return o.getId();
                     }).collect(toList());
             userService.modifyOrg(null, userIds);

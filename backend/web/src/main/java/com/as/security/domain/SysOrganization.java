@@ -26,13 +26,34 @@ import static com.google.common.base.Preconditions.checkState;
 //public class SysOrganization extends AbstractAuditable implements Nameable<Integer> {
 public class SysOrganization extends XSuperEntity<SysOrganization> implements Nameable<Integer> {
     public static final int MAX_LEVEL = 9;
+
+    /**
+     *
+     */
     private Integer id;
+
+    /**
+     *
+     */
     private Integer parentId;
+
+    /**
+     *
+     */
     private Byte level;
+
+    /**
+     *
+     */
     private Integer childes;
+
+    /**
+     *
+     */
     @NotEmpty(message = "不能为空")
     @SafeHtml(message = "不能包含html标签")
     @Size(min = 4, max = 30, message = "4到30个字符")
+
     /**
      * 名称
      */
@@ -44,6 +65,10 @@ public class SysOrganization extends XSuperEntity<SysOrganization> implements Na
      * 描述
      */
     private String description;
+
+    /**
+     *
+     */
     private Integer idOrg1;
     private Integer idOrg2;
     private Integer idOrg3;
@@ -54,7 +79,11 @@ public class SysOrganization extends XSuperEntity<SysOrganization> implements Na
     private Integer idOrg8;
     private Integer idOrg9;
 
-
+    /**
+     * @param parentId
+     * @param name
+     * @return
+     */
     public static SysOrganization of(Integer parentId, String name) {
         SysOrganization org = new SysOrganization();
         org.setParentId(parentId);

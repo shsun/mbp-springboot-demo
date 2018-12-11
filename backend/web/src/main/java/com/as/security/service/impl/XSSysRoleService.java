@@ -41,6 +41,7 @@ public class XSSysRoleService extends ServiceImpl<SysRoleMapper, SysRole> implem
         this.publisher = publisher;
     }
 
+    @Override
     @Transactional(readOnly = true)
     public IPage<SysRole> query(com.baomidou.mybatisplus.extension.plugins.pagination.Page page, RoleQueryForm params) {
         /*
@@ -57,36 +58,54 @@ public class XSSysRoleService extends ServiceImpl<SysRoleMapper, SysRole> implem
         return p;
     }
 
+    @Override
     @Transactional
     public SysRole create(SysRole role) {
-        SysRole oldRole = roleRepository.findByIdentifier(role.getIdentifier());
+        SysRole oldRole = this.findByIdentifier(role.getIdentifier());
+        // SysRole oldRole = roleRepository.findByIdentifier(role.getIdentifier());
         checkState(oldRole == null, "标识符为%s的角色已存在", role.getIdentifier());
         roleRepository.insert(role);
         return role;
     }
 
+    @Override
     @Transactional
     public SysRole modify(SysRole role) {
-        SysRole oldRole = roleRepository.findOne(role.getId());
+        SysRole oldRole = this.getById(role.getId());
+        // SysRole oldRole = roleRepository.findOne(role.getId());
         checkNotNull(oldRole, "ID为%s的角色不存在，无法修改", role.getId());
 
         //如果修改了标识符，校验标识符是否已存在
         if (!oldRole.getIdentifier().equals(role.getIdentifier())) {
-            SysRole r = roleRepository.findByIdentifier(role.getIdentifier());
+            SysRole r = this.findByIdentifier(role.getIdentifier());
             checkState(r == null, "标识符为%s的角色已存在", role.getIdentifier());
         }
-
-        roleRepository.update(role);
+        //roleRepository.update(role);
+        this.saveOrUpdate(role);
         return role;
     }
 
+    private SysRole findByIdentifier(String identifier) {
+        Wrapper<SysRole> wrapper = new QueryWrapper<SysRole>()
+                .lambda()
+                .eq(SysRole::getIdentifier, identifier);
+        SysRole oldRole = roleRepository.selectOne(wrapper);
+        return oldRole;
+    }
+
+    @Override
     @Transactional
     public void remove(int id) {
-        SysRole role = roleRepository.findOne(id);
+        // SysRole role = roleRepository.findOne(id);
+        SysRole role = this.getById(new Integer(id));
+
         checkState(role != null, "ID为%s的角色不存在", id);
         LOG.info("删除角色{}", role);
 
-        roleRepository.delete(role.getId());
+        // roleRepository.delete(role.getId());
+        this.removeById(role.getId());
+
+
         // FIXME
         // publisher.publishEvent(new RemovedEvent<SysRole>(role));
 
@@ -95,6 +114,7 @@ public class XSSysRoleService extends ServiceImpl<SysRoleMapper, SysRole> implem
         publisher.publishEvent(evt);
     }
 
+    @Override
     @Transactional
     public void remove(int... ids) {
         for (int id : ids) {
@@ -102,9 +122,11 @@ public class XSSysRoleService extends ServiceImpl<SysRoleMapper, SysRole> implem
         }
     }
 
+    @Override
     @Transactional(readOnly = true)
     public List<SysRole> getAll() {
-        List<SysRole> list = roleRepository.findAll();
+        List<SysRole> list = roleRepository.selectList(null);
+        // List<SysRole> list = roleRepository.findAll();
         return list;
     }
 }

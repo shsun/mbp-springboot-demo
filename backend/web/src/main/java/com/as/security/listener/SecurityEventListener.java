@@ -4,7 +4,7 @@ import com.as.base.event.XEvent;
 import com.as.base.event.XEventType;
 import com.as.security.domain.SysPermission;
 import com.as.security.domain.SysRole;
-import com.as.security.domain.SysUser;
+import com.as.security.domain.TUser;
 import com.as.security.service.impl.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -50,8 +50,8 @@ public class SecurityEventListener {
 
 
     @org.springframework.context.event.EventListener
-    public void onUserRemoved(XEvent<XSSysUserService, SysUser> event) {
-        SysUser user = event.getData();
+    public void onUserRemoved(XEvent<XSSysUserService, TUser> event) {
+        TUser user = event.getData();
         LOG.info("用户{}被删除，删除其与角色的关联", user);
         userRoleMapService.deleteUser(user);
     }

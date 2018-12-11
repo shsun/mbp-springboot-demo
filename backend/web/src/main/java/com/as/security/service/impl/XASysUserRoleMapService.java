@@ -2,7 +2,7 @@ package com.as.security.service.impl;
 
 import com.as.base.domain.KendoTreeNode;
 import com.as.security.domain.SysRole;
-import com.as.security.domain.SysUser;
+import com.as.security.domain.TUser;
 import com.as.security.mapper.SysRoleMapper;
 import com.as.security.mapper.SysUserRoleMapMapper;
 import com.as.security.service.IXASysUserRoleMapService;
@@ -69,7 +69,7 @@ public class XASysUserRoleMapService implements IXASysUserRoleMapService {
         }
     }
 
-    public void deleteUser(SysUser user) {
+    public void deleteUser(TUser user) {
         LOG.info("用户{}被删除，删除其与角色的关联", user);
         userRoleMapRepository.deleteByUserId(user.getId());
     }

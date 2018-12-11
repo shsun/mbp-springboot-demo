@@ -18,17 +18,17 @@ import java.util.List;
 @Mapper
 public interface SysRoleMapper extends BaseMapper<SysRole> {
 
-    SysRole findOne(Integer id);
-
-    List<SysRole> findAll();
+//    SysRole findOne(Integer id);
+//
+//    List<SysRole> findAll();
 
     // void insert(SysRole role);
-
-    void update(SysRole role);
-
-    void delete(Integer id);
-
-    List<SysRole> findByParams(RoleQueryForm from);
-
-    SysRole findByIdentifier(String identifier);
+//
+//    void update(SysRole role);
+//
+//    void delete(Integer id);
+//
+//    List<SysRole> findByParams(RoleQueryForm from);
+//
+//    SysRole findByIdentifier(String identifier);
 }

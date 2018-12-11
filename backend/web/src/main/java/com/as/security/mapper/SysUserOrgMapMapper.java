@@ -28,7 +28,7 @@ public interface SysUserOrgMapMapper {
 //    /**
 //     * 查找组织下的所有角色.
 //     */
-//    List<SysUser> findUserByOrgId(Integer roleId);
+//    List<TUser> findUserByOrgId(Integer roleId);
 //
 //    /**
 //     * 删除权限下的所有角色.

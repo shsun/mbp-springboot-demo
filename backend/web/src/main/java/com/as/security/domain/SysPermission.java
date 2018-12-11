@@ -47,6 +47,10 @@ public class SysPermission extends XSuperEntity<SysPermission> implements Nameab
     @SafeHtml(message = "不能包含html标签")
     @Size(min = 4, max = 30, message = "4到30个字符")
     private String description;
+
+    /**
+     *
+     */
     private Boolean disabled = false;
 
 

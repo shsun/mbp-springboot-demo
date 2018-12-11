@@ -1,7 +1,7 @@
 package com.as.security.service;
 
 import com.as.base.domain.LoginUser;
-import com.as.security.domain.SysUser;
+import com.as.security.domain.TUser;
 import com.as.security.form.UserQueryForm;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 
@@ -9,19 +9,19 @@ import java.util.List;
 
 public interface IXSSysUserService {
 
-    public IPage<SysUser> query(com.baomidou.mybatisplus.extension.plugins.pagination.Page page, UserQueryForm params);
+    public IPage<TUser> query(com.baomidou.mybatisplus.extension.plugins.pagination.Page page, UserQueryForm params);
 
-    public List<SysUser> findByOrgId(Integer parentId);
+    public List<TUser> findByOrgId(Integer parentId);
 
-    public List<SysUser> findByOrg(Integer parentId);
+    public List<TUser> findByOrg(Integer parentId);
 
-    public SysUser findOne(String loginName);
+    public TUser findOne(String loginName);
 
     public LoginUser authenticate(String username, String password);
 
-    public SysUser create(SysUser user);
+    public TUser create(TUser user);
 
-    public SysUser modify(SysUser user);
+    public TUser modify(TUser user);
 
     public void remove(int[] ids);
 

@@ -2,7 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.as.security.mapper.SysUserMapper">
 
-    <resultMap id="UserResultMap" type="com.as.security.domain.SysUser">
+    <!--
+    <resultMap id="UserResultMap" type="com.as.security.domain.TUser">
         <result property="id" column="ID"/>
         <result property="loginName" column="LOGIN_NAME"/>
         <result property="name" column="NAME"/>
@@ -16,7 +17,7 @@
         <result property="lastModifiedBy" column="LAST_MODIFIED_BY"/>
         <result property="lastModifiedDate" column="LAST_MODIFIED_DATE"/>
     </resultMap>
-    <resultMap id="UserResultMapOrg" type="com.as.security.domain.SysUser">
+    <resultMap id="UserResultMapOrg" type="com.as.security.domain.TUser">
         <result property="id" column="ID"/>
         <result property="loginName" column="LOGIN_NAME"/>
         <result property="name" column="NAME"/>
@@ -53,6 +54,11 @@
         from t_security_users
     </sql>
 
+    -->
+
+
+    <!--
+
     <select id="findOne" resultMap="UserResultMap">
         <include refid="Base_SELECT"/>
         where id = #{id}
@@ -61,21 +67,30 @@
     <select id="findAll" resultMap="UserResultMap">
         <include refid="Base_SELECT"/>
     </select>
+    -->
+
+    <!--
     <select id="findByOrgId" resultMap="UserResultMap">
         <include refid="Base_SELECT"/>
         where ORG_ID = #{id}
     </select>
+    -->
 
+    <!--
     <select id="findByLoginName" resultMap="UserResultMap">
         <include refid="Base_SELECT"/>
         where LOGIN_NAME = #{id}
     </select>
+    -->
+
+    <!--
     <select id="findByOrg" resultMap="UserResultMap">
         SELECT * ,
         (CASE WHEN ORG_ID > 0 THEN 'TRUE' ELSE 'FALSE' END) as CHECKED
         FROM T_SECURITY_USERS
         where ORG_ID = #{id} OR ORG_ID IS NULL OR ORG_ID=''
     </select>
+    -->
 
     <!--
     <select id="findByParams" resultMap="UserResultMap">
@@ -130,8 +145,8 @@
     </insert>
     -->
 
-
-    <update id="update" parameterType="com.as.security.domain.SysUser">
+    <!--
+    <update id="update" parameterType="com.as.security.domain.TUser">
         update t_security_users
         set LOGIN_NAME = #{loginName}
         , NAME = #{name}
@@ -144,6 +159,8 @@
         , LAST_MODIFIED_DATE = #{lastModifiedDate}
         where id = #{id}
     </update>
+    -->
+
     <update id="updateOrg">
         update t_security_users
         set ORG_ID = #{orgId}
@@ -155,10 +172,12 @@
         where ORG_ID = #{orgId}
     </update>
 
+    <!--
     <delete id="delete" parameterType="int">
         DELETE FROM t_security_users
         where id = #{id}
     </delete>
+    -->
 
 
 </mapper>
