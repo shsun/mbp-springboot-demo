@@ -9,25 +9,69 @@ import java.util.List;
 
 public interface IXSSysUserService {
 
-    public IPage<TUser> query(com.baomidou.mybatisplus.extension.plugins.pagination.Page page, UserQueryForm params);
+    /**
+     * @param page
+     * @param params
+     * @return
+     */
+    IPage<TUser> query(com.baomidou.mybatisplus.extension.plugins.pagination.Page page, UserQueryForm params);
 
-    public List<TUser> findByOrgId(Integer parentId);
+    /**
+     * @param parentId
+     * @return
+     */
+    List<TUser> findByOrgId(Integer parentId);
 
-    public List<TUser> findByOrg(Integer parentId);
+    /**
+     * @param parentId
+     * @return
+     */
+    List<TUser> findByOrg(Integer parentId);
 
-    public TUser findOne(String loginName);
+    /**
+     * @param loginName
+     * @return
+     */
+    TUser findOne(String loginName);
 
-    public LoginUser authenticate(String username, String password);
+    /**
+     * @param username
+     * @param password
+     * @return
+     */
+    LoginUser authenticate(String username, String password);
 
-    public TUser create(TUser user);
+    /**
+     * @param user
+     * @return
+     */
+    TUser create(TUser user);
 
-    public TUser modify(TUser user);
+    /**
+     * @param user
+     * @return
+     */
+    TUser modify(TUser user);
 
-    public void remove(int[] ids);
+    /**
+     * @param ids
+     */
+    void remove(int[] ids);
 
-    public void remove(int id);
+    /**
+     * @param id
+     */
+    void remove(int id);
 
-    public void changePassword(List<Integer> ids, String password);
+    /**
+     * @param ids
+     * @param password
+     */
+    void changePassword(List<Integer> ids, String password);
 
-    public void modifyOrg(Integer OrgId, List<Integer> userIds);
+    /**
+     * @param OrgId
+     * @param userIds
+     */
+    void modifyOrg(Integer OrgId, List<Integer> userIds);
 }

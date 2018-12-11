@@ -7,7 +7,15 @@ import org.springframework.data.util.Pair;
 import java.util.List;
 
 public interface IXASysAuthorizationService {
-    public Pair<List<SysRole>, List<SysPermission>> getRolesAndPermissions(final Integer userId);
+    /**
+     * @param userId
+     * @return
+     */
+    Pair<List<SysRole>, List<SysPermission>> getRolesAndPermissions(final Integer userId);
 
-    public Pair<List<String>, List<String>> getStringRolesAndPermissions(final Integer userId);
+    /**
+     * @param userId
+     * @return
+     */
+    Pair<List<String>, List<String>> getStringRolesAndPermissions(final Integer userId);
 }

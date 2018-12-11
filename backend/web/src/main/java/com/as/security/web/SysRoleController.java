@@ -4,6 +4,8 @@ import com.as.base.domain.KendoTreeNode;
 import com.as.security.domain.SysRole;
 import com.as.security.form.AssignForm;
 import com.as.security.form.RoleQueryForm;
+import com.as.security.service.IXASysRolePermissionMapService;
+import com.as.security.service.IXSSysRoleService;
 import com.as.security.service.impl.XASysRolePermissionMapService;
 import com.as.security.service.impl.XSSysRoleService;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -27,11 +29,11 @@ public class SysRoleController extends ApiController {
 
     private static final Logger LOG = LoggerFactory.getLogger(SysRoleController.class);
 
-    private final XSSysRoleService roleService;
+    private final IXSSysRoleService roleService;
 
-    private final XASysRolePermissionMapService rolePermissionMapService;
+    private final IXASysRolePermissionMapService rolePermissionMapService;
 
-    public SysRoleController(XSSysRoleService roleService, XASysRolePermissionMapService rolePermissionMapService) {
+    public SysRoleController(IXSSysRoleService roleService, IXASysRolePermissionMapService rolePermissionMapService) {
         this.roleService = roleService;
         this.rolePermissionMapService = rolePermissionMapService;
     }

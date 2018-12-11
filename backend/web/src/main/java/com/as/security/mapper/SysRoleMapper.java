@@ -1,13 +1,9 @@
 package com.as.security.mapper;
 
 import com.as.security.domain.SysRole;
-import com.as.security.form.RoleQueryForm;
-
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Component;
-
-import java.util.List;
 
 /**
  * 角色DAO.

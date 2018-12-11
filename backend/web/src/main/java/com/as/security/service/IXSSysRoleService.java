@@ -8,15 +8,37 @@ import java.util.List;
 
 
 public interface IXSSysRoleService {
-    public IPage<SysRole> query(com.baomidou.mybatisplus.extension.plugins.pagination.Page page, RoleQueryForm params);
+    /**
+     * @param page
+     * @param params
+     * @return
+     */
+    IPage<SysRole> query(com.baomidou.mybatisplus.extension.plugins.pagination.Page page, RoleQueryForm params);
 
-    public SysRole create(SysRole role);
+    /**
+     * @param role
+     * @return
+     */
+    SysRole create(SysRole role);
 
-    public SysRole modify(SysRole role);
+    /**
+     * @param role
+     * @return
+     */
+    SysRole modify(SysRole role);
 
-    public void remove(int id);
+    /**
+     * @param id
+     */
+    void remove(int id);
 
-    public void remove(int... ids);
+    /**
+     * @param ids
+     */
+    void remove(int... ids);
 
-    public List<SysRole> getAll();
+    /**
+     * @return
+     */
+    List<SysRole> getAll();
 }

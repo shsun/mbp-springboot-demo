@@ -7,10 +7,10 @@ import com.as.security.dto.OrgUserDto;
 import com.as.security.form.AssignForm;
 import com.as.security.form.ChangePasswordForm;
 import com.as.security.form.UserQueryForm;
-import com.as.security.service.impl.XASysUserOrgMapService;
-import com.as.security.service.impl.XASysUserRoleMapService;
-import com.as.security.service.impl.XSSysOrganizationService;
-import com.as.security.service.impl.XSSysUserService;
+import com.as.security.service.IXASysUserOrgMapService;
+import com.as.security.service.IXASysUserRoleMapService;
+import com.as.security.service.IXSSysOrganizationService;
+import com.as.security.service.IXSSysUserService;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.api.ApiController;
 import com.baomidou.mybatisplus.extension.api.R;
@@ -39,12 +39,12 @@ public class SysUserController extends ApiController {
     /**
      * service 构造函数注入
      */
-    private final XSSysUserService userService;
-    private final XASysUserRoleMapService userRoleMapService;
-    private final XASysUserOrgMapService userOrgMapService;
-    private final XSSysOrganizationService organizationService;
+    private final IXSSysUserService userService;
+    private final IXASysUserRoleMapService userRoleMapService;
+    private final IXASysUserOrgMapService userOrgMapService;
+    private final IXSSysOrganizationService organizationService;
 
-    public SysUserController(XSSysUserService userService, XASysUserRoleMapService userRoleMapService, XASysUserOrgMapService userOrgMapService, XSSysOrganizationService organizationService) {
+    public SysUserController(IXSSysUserService userService, IXASysUserRoleMapService userRoleMapService, IXASysUserOrgMapService userOrgMapService, IXSSysOrganizationService organizationService) {
         this.userService = userService;
         this.userRoleMapService = userRoleMapService;
         this.userOrgMapService = userOrgMapService;

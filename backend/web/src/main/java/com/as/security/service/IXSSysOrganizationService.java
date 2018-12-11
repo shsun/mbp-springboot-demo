@@ -7,17 +7,17 @@ import java.util.List;
 
 public interface IXSSysOrganizationService {
 
-    public List<SysOrganization> findAll();
+     List<SysOrganization> findAll();
 
-    public SysOrganization findOne(Integer id);
+     SysOrganization findOne(Integer id);
 
-    public List<SysOrganization> findByParentId(Integer id);
+     List<SysOrganization> findByParentId(Integer id);
 
-    public SysOrganization create(OrgDto orgDto);
+     SysOrganization create(OrgDto orgDto);
 
-    public SysOrganization modify(SysOrganization org);
+     SysOrganization modify(SysOrganization org);
 
-    public void remove(int id);
+     void remove(int id);
 
-    public void remove(int... ids);
+     void remove(int... ids);
 }

@@ -42,6 +42,7 @@ public class XSSysPermissionService extends ServiceImpl<SysPermissionMapper, Sys
         this.publisher = publisher;
     }
 
+    @Override
     @Transactional(readOnly = true)
     public IPage<SysPermission> query(com.baomidou.mybatisplus.extension.plugins.pagination.Page page, PermissionQueryForm params) {
         /*
@@ -61,13 +62,14 @@ public class XSSysPermissionService extends ServiceImpl<SysPermissionMapper, Sys
         return p;
     }
 
-
+    @Override
     @Transactional(readOnly = true)
     public List<SysPermission> findAll() {
         // return permissionRepository.findAll();
         return permissionRepository.selectList(null);
     }
 
+    @Override
     @Transactional
     public SysPermission create(SysPermission permission) {
 
@@ -81,6 +83,7 @@ public class XSSysPermissionService extends ServiceImpl<SysPermissionMapper, Sys
         return permission;
     }
 
+    @Override
     @Transactional
     public SysPermission modify(SysPermission permission) {
         Wrapper<SysPermission> wrapper;
@@ -104,6 +107,7 @@ public class XSSysPermissionService extends ServiceImpl<SysPermissionMapper, Sys
         return permission;
     }
 
+    @Override
     @Transactional
     public void remove(int... ids) {
         for (int id : ids) {
@@ -111,6 +115,7 @@ public class XSSysPermissionService extends ServiceImpl<SysPermissionMapper, Sys
         }
     }
 
+    @Override
     @Transactional
     public void remove(int id) {
 

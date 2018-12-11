@@ -7,6 +7,7 @@
         <!--VALUES (#{userId} , #{roleId})-->
     <!--</insert>-->
 
+    <!--
     <select id="findOrgsByUserId"
             resultMap="com.as.security.mapper.SysOrganizationMapper.OrganizationResultMap">
         <include refid="com.as.security.mapper.SysOrganizationMapper.Base_SELECT"/>
@@ -15,6 +16,7 @@
         WHERE ID = #{id}
         )
     </select>
+    -->
 
 
     <!--<delete id="deleteByUserId">-->

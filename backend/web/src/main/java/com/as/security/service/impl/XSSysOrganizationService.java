@@ -26,24 +26,28 @@ public class XSSysOrganizationService extends ServiceImpl<SysOrganizationMapper,
         this.organizationRepository = organizationRepository;
     }
 
+    @Override
     @Transactional(readOnly = true)
     public List<SysOrganization> findAll() {
         List<SysOrganization> list = organizationRepository.findAll();
         return list;
     }
 
+    @Override
     @Transactional(readOnly = true)
     public SysOrganization findOne(Integer id) {
         SysOrganization organization = organizationRepository.findOne(id);
         return organization;
     }
 
+    @Override
     @Transactional(readOnly = true)
     public List<SysOrganization> findByParentId(Integer id) {
         List<SysOrganization> list = organizationRepository.findByParentId(id);
         return list;
     }
 
+    @Override
     @Transactional
     public SysOrganization create(OrgDto orgDto) {
         SysOrganization parent = null;
@@ -57,17 +61,20 @@ public class XSSysOrganizationService extends ServiceImpl<SysOrganizationMapper,
         return org;
     }
 
+    @Override
     @Transactional
     public SysOrganization modify(SysOrganization org) {
         organizationRepository.update(org);
         return org;
     }
 
+    @Override
     @Transactional
     public void remove(int id) {
         organizationRepository.delete(id);
     }
 
+    @Override
     @Transactional
     public void remove(int... ids) {
         for (int id : ids) {

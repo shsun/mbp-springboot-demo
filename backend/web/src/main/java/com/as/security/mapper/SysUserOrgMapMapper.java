@@ -1,7 +1,6 @@
 package com.as.security.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 
 /**
@@ -41,5 +40,5 @@ public interface SysUserOrgMapMapper {
      * @param userId
      * @param roleId
      */
-    void updateUserOrg(@Param("userId") Integer userId, @Param("roleId") Integer roleId);
+    // void updateUserOrg(@Param("userId") Integer userId, @Param("roleId") Integer roleId);
 }

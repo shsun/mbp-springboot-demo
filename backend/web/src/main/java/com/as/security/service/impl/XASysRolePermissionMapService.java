@@ -25,21 +25,21 @@ public class XASysRolePermissionMapService implements IXASysRolePermissionMapSer
 
     private static final Logger LOG = LoggerFactory.getLogger(XASysRolePermissionMapService.class);
 
-    private final SysRolePermissionMapMapper rolePermissionMapRepository;
-    private final SysPermissionMapper permissionRepository;
+    private final SysRolePermissionMapMapper rolePermissionMapMapper;
+    private final SysPermissionMapper permissionMapper;
     private final IXSSysPermissionService permissionService;
 
-    public XASysRolePermissionMapService(IXSSysPermissionService permissionService,SysRolePermissionMapMapper rolePermissionMapRepository, SysPermissionMapper permissionRepository) {
+    public XASysRolePermissionMapService(IXSSysPermissionService permissionService, SysRolePermissionMapMapper rolePermissionMapRepository, SysPermissionMapper permissionRepository) {
         this.permissionService = permissionService;
-        this.rolePermissionMapRepository = rolePermissionMapRepository;
-        this.permissionRepository = permissionRepository;
+        this.rolePermissionMapMapper = rolePermissionMapRepository;
+        this.permissionMapper = permissionRepository;
     }
 
-
+    @Override
     @Transactional(readOnly = true)
     public List<KendoTreeNode> getCurrentPermissions(List<Integer> roleIds) {
         LOG.info("获取角色{}对应权限信息", roleIds);
-        //List<SysPermission> allPermissions = this.permissionRepository.findAll();
+        // List<SysPermission> allPermissions = this.permissionMapper.findAll();
 
         List<SysPermission> allPermissions = this.permissionService.findAll();
 
@@ -48,23 +48,24 @@ public class XASysRolePermissionMapService implements IXASysRolePermissionMapSer
                 .collect(toList());
         List<SysPermission> rolePermissions = Lists.newArrayList();
         if (roleIds != null && roleIds.size() == 1) {
-            rolePermissions = this.rolePermissionMapRepository.findPermissionsByRoleId(roleIds.get(0));
+            rolePermissions = this.rolePermissionMapMapper.findPermissionsByRoleId(roleIds.get(0));
         }
         return KendoTreeNode.toTreeNodes(enabledPermissions, rolePermissions);
     }
 
-
+    @Override
     @Transactional(readOnly = true)
     public List<SysPermission> getPermissionsByRoleIds(List<Integer> roleIds) {
         List<SysPermission> list;
         if (roleIds.isEmpty()) {
             list = Lists.newArrayList();
         } else {
-            list = this.rolePermissionMapRepository.findPermissionsByRoleIds(roleIds);
+            list = this.rolePermissionMapMapper.findPermissionsByRoleIds(roleIds);
         }
         return list;
     }
 
+    @Override
     @Transactional
     public void assignPermissions(List<Integer> roleIds, List<Integer> permissionIds) {
         for (Integer roleId : roleIds) {
@@ -72,28 +73,31 @@ public class XASysRolePermissionMapService implements IXASysRolePermissionMapSer
         }
     }
 
+    @Override
     @Transactional
     public void assignPermissions(Integer roleId, List<Integer> permissionIds) {
-        this.rolePermissionMapRepository.deleteByRoleId(roleId);
+        this.rolePermissionMapMapper.deleteByRoleId(roleId);
         for (Integer permissionId : permissionIds) {
-            this.rolePermissionMapRepository.insert(roleId, permissionId);
+            this.rolePermissionMapMapper.insert(roleId, permissionId);
         }
     }
 
-
+    @Override
     public void deleteRole(SysRole role) {
         LOG.info("角色{}被删除，删除其与权限的关联", role);
-        this.rolePermissionMapRepository.deleteByRoleId(role.getId());
+        this.rolePermissionMapMapper.deleteByRoleId(role.getId());
     }
 
+    @Override
     public void deletePermission(SysPermission permission) {
         LOG.info("权限{}被删除，删除其与角色的关联", permission);
-        this.rolePermissionMapRepository.deleteByPermissionId(permission.getId());
+        this.rolePermissionMapMapper.deleteByPermissionId(permission.getId());
     }
 
+    @Override
     @Transactional(readOnly = true)
     public List<SysPermission> getPermissionsByRole(Integer roleId) {
         LOG.info("获取角色{}对应权限信息", roleId);
-        return this.rolePermissionMapRepository.findPermissionsByRoleId(roleId);
+        return this.rolePermissionMapMapper.findPermissionsByRoleId(roleId);
     }
 }

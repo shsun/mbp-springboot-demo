@@ -25,35 +25,37 @@ import static java.util.stream.Collectors.toList;
 public class XASysUserRoleMapService implements IXASysUserRoleMapService {
 
     private static final Logger LOG = LoggerFactory.getLogger(XASysUserRoleMapService.class);
-    private final SysUserRoleMapMapper userRoleMapRepository;
-    private final SysRoleMapper roleRepository;
+    private final SysUserRoleMapMapper userRoleMapMapper;
+    private final SysRoleMapper roleMapper;
 
     public XASysUserRoleMapService(SysUserRoleMapMapper userRoleMapRepository, SysRoleMapper roleRepository) {
-        this.userRoleMapRepository = userRoleMapRepository;
-        this.roleRepository = roleRepository;
+        this.userRoleMapMapper = userRoleMapRepository;
+        this.roleMapper = roleRepository;
     }
 
-
+    @Override
     @Transactional(readOnly = true)
     public List<KendoTreeNode> getCurrentRoles(List<Integer> userIds) {
         LOG.info("获取用户{}对应角色信息", userIds);
-        List<SysRole> allRoless = roleRepository.findAll();
+        List<SysRole> allRoless = roleMapper.selectList(null);
+        // List<SysRole> allRoless = roleMapper.findAll();
         List<SysRole> enabledRoles = allRoless.stream()
                 .filter(r -> !r.getDisabled())
                 .collect(toList());
         List<SysRole> userRoles = new ArrayList<>();
         if (userIds != null && userIds.size() == 1) {
-            userRoles = userRoleMapRepository.findRolesByUserId(userIds.get(0));
+            userRoles = userRoleMapMapper.findRolesByUserId(userIds.get(0));
         }
         return KendoTreeNode.toTreeNodes(enabledRoles, userRoles);
     }
 
-
+    @Override
     @Transactional(readOnly = true)
     public List<SysRole> findRolesByUserId(Integer userId) {
-        return userRoleMapRepository.findRolesByUserId(userId);
+        return userRoleMapMapper.findRolesByUserId(userId);
     }
 
+    @Override
     @Transactional
     public void assignRoles(List<Integer> userIds, List<Integer> roleIds) {
         for (Integer userId : userIds) {
@@ -61,22 +63,24 @@ public class XASysUserRoleMapService implements IXASysUserRoleMapService {
         }
     }
 
+    @Override
     @Transactional
     public void assignRoles(Integer userId, List<Integer> roleIds) {
-        userRoleMapRepository.deleteByUserId(userId);
+        userRoleMapMapper.deleteByUserId(userId);
         for (Integer roleId : roleIds) {
-            userRoleMapRepository.insert(userId, roleId);
+            userRoleMapMapper.insert(userId, roleId);
         }
     }
 
+    @Override
     public void deleteUser(TUser user) {
         LOG.info("用户{}被删除，删除其与角色的关联", user);
-        userRoleMapRepository.deleteByUserId(user.getId());
+        userRoleMapMapper.deleteByUserId(user.getId());
     }
 
-
+    @Override
     public void deleteRole(SysRole role) {
         LOG.info("角色{}被删除，删除其与角色的关联", role);
-        userRoleMapRepository.deleteByRoleId(role.getId());
+        userRoleMapMapper.deleteByRoleId(role.getId());
     }
 }

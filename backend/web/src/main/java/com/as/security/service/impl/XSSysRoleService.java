@@ -85,13 +85,6 @@ public class XSSysRoleService extends ServiceImpl<SysRoleMapper, SysRole> implem
         return role;
     }
 
-    private SysRole findByIdentifier(String identifier) {
-        Wrapper<SysRole> wrapper = new QueryWrapper<SysRole>()
-                .lambda()
-                .eq(SysRole::getIdentifier, identifier);
-        SysRole oldRole = roleRepository.selectOne(wrapper);
-        return oldRole;
-    }
 
     @Override
     @Transactional
@@ -128,5 +121,13 @@ public class XSSysRoleService extends ServiceImpl<SysRoleMapper, SysRole> implem
         List<SysRole> list = roleRepository.selectList(null);
         // List<SysRole> list = roleRepository.findAll();
         return list;
+    }
+
+    private SysRole findByIdentifier(String identifier) {
+        Wrapper<SysRole> wrapper = new QueryWrapper<SysRole>()
+                .lambda()
+                .eq(SysRole::getIdentifier, identifier);
+        SysRole oldRole = roleRepository.selectOne(wrapper);
+        return oldRole;
     }
 }

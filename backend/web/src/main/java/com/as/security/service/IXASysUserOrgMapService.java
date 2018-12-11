@@ -4,6 +4,18 @@ import java.util.List;
 
 public interface IXASysUserOrgMapService {
 
-    public void assignOrgs(List<Integer> userIds, List<Integer> orgIds) throws Exception;
-    public void assignOrg(Integer userId, List<Integer> orgIds);
+    /**
+     *
+     * @param userIds
+     * @param orgIds
+     * @throws Exception
+     */
+    void assignOrgs(List<Integer> userIds, List<Integer> orgIds) throws Exception;
+
+    /**
+     *
+     * @param userId
+     * @param orgIds
+     */
+    void assignOrg(Integer userId, List<Integer> orgIds);
 }
