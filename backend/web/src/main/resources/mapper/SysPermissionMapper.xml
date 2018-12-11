@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.as.cyems.mapper.SysPermissionMapper">
+
+    <resultMap id="PermissionResultMap" type="com.as.security.domain.SysPermission">
+        <result property="id" column="ID"/>
+        <result property="identifier" column="IDENTIFIER"/>
+        <result property="name" column="NAME"/>
+        <result property="description" column="DESCRIPTION"/>
+        <result property="disabled" column="DISABLED"/>
+        <result property="createdBy" column="CREATED_BY"/>
+        <result property="createdDate" column="CREATED_DATE"/>
+        <result property="lastModifiedBy" column="LAST_MODIFIED_BY"/>
+        <result property="lastModifiedDate" column="LAST_MODIFIED_DATE"/>
+    </resultMap>
+
+    <!--
+    <resultMap id="PermissionExcelResultMap" type="com.as.security.excel.PermissionExcel">
+        <result property="identifier" column="IDENTIFIER"/>
+        <result property="name" column="NAME"/>
+        <result property="description" column="DESCRIPTION"/>
+    </resultMap>
+    -->
+
+    <sql id="Base_Columns">
+        ID,
+        IDENTIFIER,
+        NAME,
+        DESCRIPTION,
+        DISABLED,
+        CREATED_BY,
+        CREATED_DATE,
+        LAST_MODIFIED_BY,
+        LAST_MODIFIED_DATE
+    </sql>
+
+    <sql id="Base_SELECT">
+        SELECT
+        <include refid="com.as.cyems.mapper.SysPermissionMapper.Base_Columns"/>
+        from t_security_permissions
+    </sql>
+
+    <!--
+    <select id="findOne" resultMap="PermissionResultMap">
+        <include refid="Base_SELECT"/>
+        where id = #{id}
+    </select>
+    -->
+
+    <!--
+    <select id="findAll" resultMap="PermissionResultMap">
+        <include refid="Base_SELECT"/>
+    </select>
+    -->
+
+    <!--
+    <select id="findByParams" resultMap="PermissionResultMap">
+        <include refid="Base_SELECT"/>
+        <where>
+            <if test="disabled != null">
+                DISABLED = #{disabled}
+            </if>
+            <if test="keyword != null and keyword != ''">
+                AND (IDENTIFIER like #{keyword}
+                or NAME like #{keyword}
+                or DESCRIPTION like #{keyword}
+                )
+            </if>
+        </where>
+    </select>
+    -->
+
+    <!--
+    <select id="findByParamsExcel" resultMap="PermissionExcelResultMap">
+        <include refid="Base_SELECT"/>
+        <where>
+            <if test="disabled != null">
+                DISABLED = #{disabled}
+            </if>
+            <if test="keyword != null and keyword != ''">
+                AND (IDENTIFIER like #{keyword}
+                or NAME like #{keyword}
+                or DESCRIPTION like #{keyword}
+                )
+            </if>
+        </where>
+    </select>
+    -->
+
+    <!--
+    <select id="findByIdentifier" resultMap="PermissionResultMap">
+        <include refid="Base_SELECT"/>
+        where IDENTIFIER = #{identifier}
+    </select>
+    -->
+
+    <!--
+    <insert id="insert" useGeneratedKeys="true" parameterType="permission">
+        <selectKey keyProperty="id" resultType="int" order="BEFORE">
+            SELECT SECURITY_SEQUENCE.nextVal from dual
+        </selectKey>
+        insert into t_security_permissions (
+        ID,
+        IDENTIFIER,
+        NAME,
+        DESCRIPTION,
+        DISABLED,
+        CREATED_BY,
+        CREATED_DATE,
+        LAST_MODIFIED_BY,
+        LAST_MODIFIED_DATE
+        )values (
+        #{id},
+        #{identifier},
+        #{name},
+        #{description},
+        #{disabled},
+        #{createdBy},
+        #{createdDate},
+        #{lastModifiedBy},
+        #{lastModifiedDate}
+        )
+    </insert>
+    -->
+
+
+    <!--
+    <update id="update" parameterType="com.as.security.domain.SysPermission">
+        update t_security_permissions
+        set IDENTIFIER = #{identifier}
+        , NAME = #{name}
+        , DESCRIPTION = #{description}
+        , DISABLED = #{disabled}
+        , LAST_MODIFIED_BY = #{lastModifiedBy}
+        , LAST_MODIFIED_DATE = #{lastModifiedDate}
+        where id = #{id}
+    </update>
+    -->
+
+    <delete id="delete" parameterType="int">
+        DELETE FROM t_security_permissions
+        where id = #{id}
+    </delete>
+
+
+</mapper>
