@@ -56,7 +56,7 @@ public class XASysUserRoleMapService implements IXASysUserRoleMapService {
     }
 
     @Override
-    @Transactional
+    @Transactional(rollbackFor = {Exception.class})
     public void assignRoles(List<Integer> userIds, List<Integer> roleIds) {
         for (Integer userId : userIds) {
             assignRoles(userId, roleIds);
@@ -64,7 +64,7 @@ public class XASysUserRoleMapService implements IXASysUserRoleMapService {
     }
 
     @Override
-    @Transactional
+    @Transactional(rollbackFor = {Exception.class})
     public void assignRoles(Integer userId, List<Integer> roleIds) {
         userRoleMapMapper.deleteByUserId(userId);
         for (Integer roleId : roleIds) {

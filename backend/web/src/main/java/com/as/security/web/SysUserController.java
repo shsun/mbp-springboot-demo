@@ -15,6 +15,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.api.ApiController;
 import com.baomidou.mybatisplus.extension.api.R;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
@@ -58,11 +59,10 @@ public class SysUserController extends ApiController {
      * @param form 查询条件
      * @return
      */
+    @ApiOperation(value = "查询用户信息(分页)", notes = "", httpMethod = "GET")
     @GetMapping
     public IPage<TUser> query(com.baomidou.mybatisplus.extension.plugins.pagination.Page page, UserQueryForm form) {
         LOG.info("查询用户:{}.{}", page, form);
-//        LocalDate
-//                LocalDateTime
         return userService.query(page, form);
     }
 
@@ -72,11 +72,12 @@ public class SysUserController extends ApiController {
      * @param user 入参
      * @return
      */
+    @ApiOperation(value = "添加用户", notes = "", httpMethod = "POST")
     @PostMapping
-    public TUser create(@Validated @RequestBody TUser user) {
+    public R<TUser> create(@Validated @RequestBody TUser user) {
         LOG.info("创建用户{}", user);
         userService.create(user);
-        return user;
+        return R.ok(user);
     }
 
     /**
@@ -85,6 +86,7 @@ public class SysUserController extends ApiController {
      * @param user 入参
      * @return
      */
+    @ApiOperation(value = "修改用户信息", notes = "", httpMethod = "PUT")
     @PutMapping
     public TUser modify(@Validated @RequestBody TUser user) {
         LOG.info("修改用户{}", user);
@@ -98,6 +100,7 @@ public class SysUserController extends ApiController {
      * @param ids
      * @return
      */
+    @ApiOperation(value = "按照ID删除多个用户信息", notes = "", httpMethod = "DELETE")
     @DeleteMapping
     public R<String> remove(@RequestBody int[] ids) {
         LOG.info("批量删除用户{}", ids);
@@ -111,6 +114,7 @@ public class SysUserController extends ApiController {
      * @param form
      * @return
      */
+    @ApiOperation(value = "修改用户密码", notes = "", httpMethod = "PUT")
     @PutMapping("/password")
     public R<String> changePassword(@RequestBody ChangePasswordForm form) {
         LOG.info("修改用户密码{}", form);
@@ -124,6 +128,7 @@ public class SysUserController extends ApiController {
      * @param userIds
      * @return
      */
+    @ApiOperation(value = "获取当前用户角色", notes = "一个用户可能有多个角色, 比如某人可以是数学老师, 可能是班主任, 可能是年级长, 甚至是校长....", httpMethod = "GET")
     @GetMapping("/roles")
     public Map<String, Object> getCurrentRoles(@RequestParam(required = false, name = "ids") List<Integer> userIds) {
         LOG.info("获取用户{}角色信息", userIds);
@@ -137,6 +142,7 @@ public class SysUserController extends ApiController {
      * @param form
      * @return
      */
+    @ApiOperation(value = "修改当前用户角色", notes = "", httpMethod = "POST")
     @PostMapping("/roles")
     public R<String> assignRolesToUsers(@Validated @RequestBody AssignForm form) {
         LOG.info("用户角色分配{}", form);
@@ -151,6 +157,7 @@ public class SysUserController extends ApiController {
      * @return
      * @throws Exception
      */
+    @ApiOperation(value = "修改当前用户所属组织", notes = "", httpMethod = "POST")
     @PostMapping("/orgs")
     public R<String> assignOrgsToUsers(@Validated @RequestBody AssignForm form) throws Exception {
         LOG.info("用户角色分配{}", form);
@@ -163,10 +170,15 @@ public class SysUserController extends ApiController {
         return R.ok("success");
     }
 
+    /**
+     *
+     * @param parentId
+     * @return
+     */
+    @ApiOperation(value = "查询父节点下的组织机构", notes = "", httpMethod = "POST")
     @GetMapping("/orgs")
     public R<List<OrgUserDto>> query(final @RequestParam(name = "id", required = false) Integer parentId) {
         LOG.info("查询父节点[{}]下的组织机构数据", parentId);
-
         List<SysOrganization> orgs = organizationService.findByParentId(parentId);
         List<OrgUserDto> dtos = new ArrayList<>(0);
         if (!orgs.isEmpty()) {

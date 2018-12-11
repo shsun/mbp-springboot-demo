@@ -59,7 +59,7 @@ public class XSSysRoleService extends ServiceImpl<SysRoleMapper, SysRole> implem
     }
 
     @Override
-    @Transactional
+    @Transactional(rollbackFor = {Exception.class})
     public SysRole create(SysRole role) {
         SysRole oldRole = this.findByIdentifier(role.getIdentifier());
         // SysRole oldRole = roleRepository.findByIdentifier(role.getIdentifier());
@@ -69,7 +69,7 @@ public class XSSysRoleService extends ServiceImpl<SysRoleMapper, SysRole> implem
     }
 
     @Override
-    @Transactional
+    @Transactional(rollbackFor = {Exception.class})
     public SysRole modify(SysRole role) {
         SysRole oldRole = this.getById(role.getId());
         // SysRole oldRole = roleRepository.findOne(role.getId());
@@ -87,7 +87,7 @@ public class XSSysRoleService extends ServiceImpl<SysRoleMapper, SysRole> implem
 
 
     @Override
-    @Transactional
+    @Transactional(rollbackFor = {Exception.class})
     public void remove(int id) {
         // SysRole role = roleRepository.findOne(id);
         SysRole role = this.getById(new Integer(id));
@@ -97,18 +97,16 @@ public class XSSysRoleService extends ServiceImpl<SysRoleMapper, SysRole> implem
 
         // roleRepository.delete(role.getId());
         this.removeById(role.getId());
-
-
+        
         // FIXME
         // publisher.publishEvent(new RemovedEvent<SysRole>(role));
-
 
         XEvent evt = new XEvent<XSSysRoleService, SysRole>(this, XEventType.DB_DELETE, role);
         publisher.publishEvent(evt);
     }
 
     @Override
-    @Transactional
+    @Transactional(rollbackFor = {Exception.class})
     public void remove(int... ids) {
         for (int id : ids) {
             remove(id);

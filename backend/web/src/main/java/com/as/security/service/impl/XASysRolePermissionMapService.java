@@ -66,7 +66,7 @@ public class XASysRolePermissionMapService implements IXASysRolePermissionMapSer
     }
 
     @Override
-    @Transactional
+    @Transactional(rollbackFor = {Exception.class})
     public void assignPermissions(List<Integer> roleIds, List<Integer> permissionIds) {
         for (Integer roleId : roleIds) {
             this.assignPermissions(roleId, permissionIds);
@@ -74,7 +74,7 @@ public class XASysRolePermissionMapService implements IXASysRolePermissionMapSer
     }
 
     @Override
-    @Transactional
+    @Transactional(rollbackFor = {Exception.class})
     public void assignPermissions(Integer roleId, List<Integer> permissionIds) {
         this.rolePermissionMapMapper.deleteByRoleId(roleId);
         for (Integer permissionId : permissionIds) {

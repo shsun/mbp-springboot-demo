@@ -26,5 +26,5 @@ public interface SysOrganizationMapper extends BaseMapper<SysOrganization> {
 
     void delete(Integer id);
 
-    List<SysOrganization> findByParentId(@Param("id") Integer id);
+    // List<SysOrganization> findByParentId(@Param("id") Integer id);
 }

@@ -4,6 +4,8 @@ import com.as.security.domain.SysOrganization;
 import com.as.security.dto.OrgDto;
 import com.as.security.mapper.SysOrganizationMapper;
 import com.as.security.service.IXSSysOrganizationService;
+import com.baomidou.mybatisplus.core.conditions.Wrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -43,12 +45,24 @@ public class XSSysOrganizationService extends ServiceImpl<SysOrganizationMapper,
     @Override
     @Transactional(readOnly = true)
     public List<SysOrganization> findByParentId(Integer id) {
-        List<SysOrganization> list = organizationRepository.findByParentId(id);
+        /*
+                <if test="id == null">
+            PARENT_ID IS NULL
+        </if>
+        <if test="id != null">
+            PARENT_ID = #{id}
+        </if>
+         */
+        // List<SysOrganization> list = organizationRepository.findByParentId(id);
+
+        Wrapper<SysOrganization> wrapper = new QueryWrapper<SysOrganization>().lambda().eq(SysOrganization::getParentId, id);
+        List<SysOrganization> list = organizationRepository.selectList(wrapper);
+
         return list;
     }
 
     @Override
-    @Transactional
+    @Transactional(rollbackFor = {Exception.class})
     public SysOrganization create(OrgDto orgDto) {
         SysOrganization parent = null;
         // orgDto.setParentId(orgDto.getPareId());
@@ -62,20 +76,20 @@ public class XSSysOrganizationService extends ServiceImpl<SysOrganizationMapper,
     }
 
     @Override
-    @Transactional
+    @Transactional(rollbackFor = {Exception.class})
     public SysOrganization modify(SysOrganization org) {
         organizationRepository.update(org);
         return org;
     }
 
     @Override
-    @Transactional
+    @Transactional(rollbackFor = {Exception.class})
     public void remove(int id) {
         organizationRepository.delete(id);
     }
 
     @Override
-    @Transactional
+    @Transactional(rollbackFor = {Exception.class})
     public void remove(int... ids) {
         for (int id : ids) {
             remove(id);

@@ -99,6 +99,7 @@
     <!--</where>-->
     <!--</select>-->
 
+    <!--
     <select id="findByParentId" resultMap="OrganizationResultMap" parameterType="int">
         <include refid="Base_SELECT"/>
         where
@@ -109,6 +110,7 @@
             PARENT_ID = #{id}
         </if>
     </select>
+    -->
 
     <!--
     <insert id="insert" useGeneratedKeys="true" parameterType="organization">

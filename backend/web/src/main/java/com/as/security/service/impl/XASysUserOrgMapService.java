@@ -5,6 +5,8 @@ import com.as.security.mapper.SysOrganizationMapper;
 import com.as.security.mapper.SysUserMapper;
 import com.as.security.mapper.SysUserOrgMapMapper;
 import com.as.security.service.IXASysUserOrgMapService;
+import com.as.security.service.IXSSysOrganizationService;
+import com.google.common.collect.Lists;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -21,36 +23,38 @@ public class XASysUserOrgMapService implements IXASysUserOrgMapService {
     private final SysUserOrgMapMapper userOrgMapMapper;
     private final SysUserMapper userMapper;
 
+    private final IXSSysOrganizationService organizationService;
 
-    public XASysUserOrgMapService(SysOrganizationMapper organizationRepository, SysUserOrgMapMapper userOrgMapRepository, SysUserMapper userRepository) {
+
+    public XASysUserOrgMapService(IXSSysOrganizationService organizationService, SysOrganizationMapper organizationRepository, SysUserOrgMapMapper userOrgMapRepository, SysUserMapper userRepository) {
+        this.organizationService = organizationService;
         this.organizationMapper = organizationRepository;
         this.userOrgMapMapper = userOrgMapRepository;
         this.userMapper = userRepository;
     }
 
     @Override
-    @Transactional
+    @Transactional(rollbackFor = {Exception.class})
     public void assignOrgs(List<Integer> userIds, List<Integer> orgIds) throws Exception {
-        List<SysOrganization> orgs;
+        List<SysOrganization> orgs = Lists.newArrayList();
         for (Integer orgId : orgIds) {
-            orgs = organizationMapper.findByParentId(orgId);
+            // orgs = organizationMapper.findByParentId(orgId);
+            orgs = this.organizationService.findByParentId(orgId);
             if (orgs != null && !orgs.isEmpty()) {
-                //有子节点
+                // 有子节点
                 throw new Exception("只能选择没有子节点的组织机构");
             }
         }
         for (Integer userId : userIds) {
-            assignOrg(userId, orgIds);
+            this.assignOrg(userId, orgIds);
         }
     }
 
     @Override
-    @Transactional
+    @Transactional(rollbackFor = {Exception.class})
     public void assignOrg(Integer userId, List<Integer> orgIds) {
         for (Integer orgId : orgIds) {
             userMapper.updateOrg(userId, orgId);
         }
     }
-
-
 }

@@ -126,7 +126,7 @@ public class XSSysUserService extends ServiceImpl<SysUserMapper, TUser> implemen
     }
 
     @Override
-    @Transactional
+    @Transactional(rollbackFor = {Exception.class})
     public TUser create(TUser user) {
         LOG.info("新增用户{}", user.getLoginName());
         TUser oldUser = this.findByLoginName(user.getLoginName());
@@ -140,7 +140,7 @@ public class XSSysUserService extends ServiceImpl<SysUserMapper, TUser> implemen
     }
 
     @Override
-    @Transactional
+    @Transactional(rollbackFor = {Exception.class})
     public TUser modify(TUser user) {
         TUser oldUser = userRepository.selectById(user.getId());//userRepository.findOne(user.getId());
         checkNotNull(oldUser, "ID为%s的用户不存在，无法修改", user.getId());
@@ -159,7 +159,7 @@ public class XSSysUserService extends ServiceImpl<SysUserMapper, TUser> implemen
     }
 
     @Override
-    @Transactional
+    @Transactional(rollbackFor = {Exception.class})
     public void remove(int[] ids) {
         for (int id : ids) {
             this.remove(id);
@@ -167,9 +167,8 @@ public class XSSysUserService extends ServiceImpl<SysUserMapper, TUser> implemen
     }
 
     @Override
-    @Transactional
+    @Transactional(rollbackFor = {Exception.class})
     public void remove(int id) {
-
         TUser user = this.getById(new Integer(id));//userRepository.findOne(id);
         checkNotNull(user, "未找到ID为%s的用户", id);
         LOG.info("删除用户{}", user);
@@ -183,7 +182,7 @@ public class XSSysUserService extends ServiceImpl<SysUserMapper, TUser> implemen
     }
 
     @Override
-    @Transactional
+    @Transactional(rollbackFor = {Exception.class})
     public void changePassword(List<Integer> ids, String password) {
         for (int id : ids) {
             TUser user = this.getById(id);
@@ -196,7 +195,7 @@ public class XSSysUserService extends ServiceImpl<SysUserMapper, TUser> implemen
     }
 
     @Override
-    @Transactional
+    @Transactional(rollbackFor = {Exception.class})
     public void modifyOrg(Integer OrgId, List<Integer> userIds) {
         // userRepository.updateOrg().deleteByUserId(userId);
         userRepository.updateOrgNull(OrgId);

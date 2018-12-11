@@ -70,7 +70,7 @@ public class XSSysPermissionService extends ServiceImpl<SysPermissionMapper, Sys
     }
 
     @Override
-    @Transactional
+    @Transactional(rollbackFor = {Exception.class})
     public SysPermission create(SysPermission permission) {
 
         Wrapper<SysPermission> wrapper = new QueryWrapper<SysPermission>().lambda().eq(SysPermission::getIdentifier, permission.getIdentifier());
@@ -84,7 +84,7 @@ public class XSSysPermissionService extends ServiceImpl<SysPermissionMapper, Sys
     }
 
     @Override
-    @Transactional
+    @Transactional(rollbackFor = {Exception.class})
     public SysPermission modify(SysPermission permission) {
         Wrapper<SysPermission> wrapper;
 
@@ -108,7 +108,7 @@ public class XSSysPermissionService extends ServiceImpl<SysPermissionMapper, Sys
     }
 
     @Override
-    @Transactional
+    @Transactional(rollbackFor = {Exception.class})
     public void remove(int... ids) {
         for (int id : ids) {
             remove(id);
@@ -116,7 +116,7 @@ public class XSSysPermissionService extends ServiceImpl<SysPermissionMapper, Sys
     }
 
     @Override
-    @Transactional
+    @Transactional(rollbackFor = {Exception.class})
     public void remove(int id) {
 
         Wrapper<SysPermission> wrapper = new QueryWrapper<SysPermission>().lambda().eq(SysPermission::getId, id);
