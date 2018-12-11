@@ -4,7 +4,7 @@ import com.as.base.utils.XReflectorUtil;
 import com.as.cyems.ErrorCode;
 import com.as.cyems.domain.User;
 import com.as.cyems.form.UserForm;
-import com.as.cyems.service.IUserService;
+import com.as.security.service.IUserService;
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;

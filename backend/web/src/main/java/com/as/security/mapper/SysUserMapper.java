@@ -1,4 +1,4 @@
-package com.as.cyems.mapper;
+package com.as.security.mapper;
 
 import com.as.security.domain.SysUser;
 import com.as.security.form.UserQueryForm;

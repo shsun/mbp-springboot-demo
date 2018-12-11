@@ -1,4 +1,4 @@
-package com.as.cyems.mapper;
+package com.as.security.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;

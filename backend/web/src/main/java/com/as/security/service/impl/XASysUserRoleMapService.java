@@ -1,11 +1,11 @@
-package com.as.cyems.service.impl;
+package com.as.security.service.impl;
 
 import com.as.base.domain.KendoTreeNode;
 import com.as.security.domain.SysRole;
 import com.as.security.domain.SysUser;
-import com.as.cyems.mapper.SysRoleMapper;
-import com.as.cyems.mapper.SysUserRoleMapMapper;
-import com.as.cyems.service.IXASysUserRoleMapService;
+import com.as.security.mapper.SysRoleMapper;
+import com.as.security.mapper.SysUserRoleMapMapper;
+import com.as.security.service.IXASysUserRoleMapService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.as.cyems.mapper.SysRoleMapper">
+<mapper namespace="com.as.security.mapper.SysRoleMapper">
 
     <resultMap id="RoleResultMap" type="com.as.security.domain.SysRole">
         <result property="id" column="ID"/>
@@ -28,7 +28,7 @@
 
     <sql id="Base_SELECT">
         SELECT
-        <include refid="com.as.cyems.mapper.SysRoleMapper.Base_Columns"/>
+        <include refid="com.as.security.mapper.SysRoleMapper.Base_Columns"/>
         from t_security_roles
     </sql>
 

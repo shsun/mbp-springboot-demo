@@ -1,4 +1,4 @@
-package com.as.cyems.service.impl;
+package com.as.security.service.impl;
 
 import com.as.base.event.XEvent;
 import com.as.base.event.XEventType;
@@ -6,8 +6,8 @@ import com.as.base.jsignal.IXSignal;
 import com.as.base.jsignal.XSignal;
 import com.as.security.domain.SysRole;
 import com.as.security.form.RoleQueryForm;
-import com.as.cyems.mapper.SysRoleMapper;
-import com.as.cyems.service.IXSSysRoleService;
+import com.as.security.mapper.SysRoleMapper;
+import com.as.security.service.IXSSysRoleService;
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;

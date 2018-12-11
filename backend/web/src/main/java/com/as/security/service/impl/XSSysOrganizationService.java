@@ -1,9 +1,9 @@
-package com.as.cyems.service.impl;
+package com.as.security.service.impl;
 
 import com.as.security.domain.SysOrganization;
 import com.as.security.dto.OrgDto;
-import com.as.cyems.mapper.SysOrganizationMapper;
-import com.as.cyems.service.IXSSysOrganizationService;
+import com.as.security.mapper.SysOrganizationMapper;
+import com.as.security.service.IXSSysOrganizationService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

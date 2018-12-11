@@ -1,4 +1,4 @@
-package com.as.cyems.service;
+package com.as.security.service;
 
 import com.as.security.domain.SysPermission;
 import com.as.security.form.PermissionQueryForm;

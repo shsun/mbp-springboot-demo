@@ -1,10 +1,10 @@
-package com.as.cyems.service.impl;
+package com.as.security.service.impl;
 
 import com.as.security.domain.SysOrganization;
-import com.as.cyems.mapper.SysOrganizationMapper;
-import com.as.cyems.mapper.SysUserOrgMapMapper;
-import com.as.cyems.mapper.SysUserMapper;
-import com.as.cyems.service.IXASysUserOrgMapService;
+import com.as.security.mapper.SysOrganizationMapper;
+import com.as.security.mapper.SysUserOrgMapMapper;
+import com.as.security.mapper.SysUserMapper;
+import com.as.security.service.IXASysUserOrgMapService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;

@@ -1,4 +1,4 @@
-package com.as.cyems.service;
+package com.as.security.service;
 
 import com.as.cyems.domain.User;
 import com.as.cyems.mapper.UserMapper;

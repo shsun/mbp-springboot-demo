@@ -1,4 +1,4 @@
-package com.as.cyems.service;
+package com.as.security.service;
 
 import com.as.security.domain.SysOrganization;
 import com.as.security.dto.OrgDto;

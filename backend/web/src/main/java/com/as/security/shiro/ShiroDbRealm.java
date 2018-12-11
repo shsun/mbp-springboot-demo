@@ -3,8 +3,8 @@ package com.as.security.shiro;
 import com.as.base.domain.LoginUser;
 
 import com.as.security.domain.SysUser;
-import com.as.cyems.service.impl.XASysAuthorizationService;
-import com.as.cyems.service.impl.XSSysUserService;
+import com.as.security.service.impl.XASysAuthorizationService;
+import com.as.security.service.impl.XSSysUserService;
 
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authc.credential.PasswordMatcher;

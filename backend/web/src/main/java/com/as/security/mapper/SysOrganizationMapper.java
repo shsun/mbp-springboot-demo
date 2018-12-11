@@ -1,4 +1,4 @@
-package com.as.cyems.mapper;
+package com.as.security.mapper;
 
 import com.as.security.domain.SysOrganization;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;

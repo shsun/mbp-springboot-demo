@@ -1,8 +1,8 @@
-package com.as.cyems.service.impl;
+package com.as.security.service.impl;
 
 import com.as.security.domain.SysPermission;
 import com.as.security.domain.SysRole;
-import com.as.cyems.service.IXASysAuthorizationService;
+import com.as.security.service.IXASysAuthorizationService;
 import com.google.common.collect.Lists;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.as.cyems.mapper.SysPermissionMapper">
+<mapper namespace="com.as.security.mapper.SysPermissionMapper">
 
     <resultMap id="PermissionResultMap" type="com.as.security.domain.SysPermission">
         <result property="id" column="ID"/>
@@ -36,7 +36,7 @@
 
     <sql id="Base_SELECT">
         SELECT
-        <include refid="com.as.cyems.mapper.SysPermissionMapper.Base_Columns"/>
+        <include refid="com.as.security.mapper.SysPermissionMapper.Base_Columns"/>
         from t_security_permissions
     </sql>
 

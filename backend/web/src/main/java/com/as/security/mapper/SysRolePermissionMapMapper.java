@@ -1,4 +1,4 @@
-package com.as.cyems.mapper;
+package com.as.security.mapper;
 
 import com.as.security.domain.SysPermission;
 import com.as.security.domain.SysRole;

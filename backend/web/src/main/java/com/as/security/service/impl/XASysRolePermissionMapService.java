@@ -1,12 +1,12 @@
-package com.as.cyems.service.impl;
+package com.as.security.service.impl;
 
 import com.as.base.domain.KendoTreeNode;
 import com.as.security.domain.SysPermission;
 import com.as.security.domain.SysRole;
-import com.as.cyems.mapper.SysPermissionMapper;
-import com.as.cyems.mapper.SysRolePermissionMapMapper;
-import com.as.cyems.service.IXASysRolePermissionMapService;
-import com.as.cyems.service.IXSSysPermissionService;
+import com.as.security.mapper.SysPermissionMapper;
+import com.as.security.mapper.SysRolePermissionMapMapper;
+import com.as.security.service.IXASysRolePermissionMapService;
+import com.as.security.service.IXSSysPermissionService;
 import com.google.common.collect.Lists;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

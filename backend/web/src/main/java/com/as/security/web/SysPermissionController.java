@@ -2,8 +2,8 @@ package com.as.security.web;
 
 import com.as.security.domain.SysPermission;
 import com.as.security.form.PermissionQueryForm;
-import com.as.cyems.service.impl.XASysRolePermissionMapService;
-import com.as.cyems.service.impl.XSSysPermissionService;
+import com.as.security.service.impl.XASysRolePermissionMapService;
+import com.as.security.service.impl.XSSysPermissionService;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.api.ApiController;
 import com.baomidou.mybatisplus.extension.api.R;

@@ -3,7 +3,7 @@ package com.as.cyems.service.impl;
 
 import com.as.cyems.domain.User;
 import com.as.cyems.mapper.UserMapper;
-import com.as.cyems.service.IUserService;
+import com.as.security.service.IUserService;
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;

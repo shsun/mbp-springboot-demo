@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.as.cyems.mapper.SysUserOrgMapMapper">
+<mapper namespace="com.as.security.mapper.SysUserOrgMapMapper">
 
     <!--<insert id="insert">-->
         <!--INSERT INTO T_SECURITY_USER_ROLE_MAP (USER_ID, ROLE_ID)-->
@@ -8,8 +8,8 @@
     <!--</insert>-->
 
     <select id="findOrgsByUserId"
-            resultMap="com.as.cyems.mapper.SysOrganizationMapper.OrganizationResultMap">
-        <include refid="com.as.cyems.mapper.SysOrganizationMapper.Base_SELECT"/>
+            resultMap="com.as.security.mapper.SysOrganizationMapper.OrganizationResultMap">
+        <include refid="com.as.security.mapper.SysOrganizationMapper.Base_SELECT"/>
         WHERE id in (
         select ORG_ID from t_security_users
         WHERE ID = #{id}

@@ -1,11 +1,11 @@
-package com.as.cyems.service.impl;
+package com.as.security.service.impl;
 
 import com.as.base.event.XEvent;
 import com.as.base.event.XEventType;
 import com.as.security.domain.SysPermission;
 import com.as.security.form.PermissionQueryForm;
-import com.as.cyems.mapper.SysPermissionMapper;
-import com.as.cyems.service.IXSSysPermissionService;
+import com.as.security.mapper.SysPermissionMapper;
+import com.as.security.service.IXSSysPermissionService;
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
